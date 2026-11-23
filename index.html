@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Большой ЧаВО по эфилизму: 55 главных вопросов и ответов">
+<meta property="og:description" content="Сводное справочное руководство проекта Efilism RUS (ред. 2026): 8 разделов, живой поиск по вопросам и прямые ссылки на каждый ответ.">
+<meta name="description" content="Большой ЧаВО по эфилизму (55 вопросов, 8 тематических разделов). Справочник проекта Efilism RUS на основе монографии 2026 года.">
+<title>Большой ЧаВО по эфилизму: 55 главных вопросов и ответов</title>
+<style>
+  :root {
+    --primary: #1B365D;
+    --accent: #2B5B84;
+    --accent-soft: #EBF2F8;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+    --text: #1E293B;
+    --muted: #64748B;
+    --ok: #15803D;
+    --ok-bg: #DCFCE7;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.68;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 36px 24px 80px;
+  }
+  header {
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+  h1 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin: 0 0 14px;
+  }
+  .intro {
+    font-size: 1.04rem;
+    margin: 0;
+  }
+
+  /* Панель живого поиска */
+  .search-bar-wrap {
+    position: sticky;
+    top: 12px;
+    z-index: 30;
+    background: rgba(248, 250, 252, 0.94);
+    backdrop-filter: blur(8px);
+    padding: 10px 0 14px;
+    margin-bottom: 20px;
+  }
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 8px rgba(27, 54, 93, 0.06);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .search-box:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(43, 91, 132, 0.14);
+  }
+  .search-icon {
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  #faqSearch {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text);
+    font-family: inherit;
+    min-width: 0;
+  }
+  #faqSearch::placeholder {
+    color: #94A3B8;
+  }
+  .search-clear {
+    display: none;
+    border: none;
+    background: var(--accent-soft);
+    color: var(--primary);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .search-clear.visible {
+    display: inline-flex;
+  }
+  .search-clear:hover {
+    background: #DCE7F3;
+  }
+  .search-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 6px;
+    padding: 0 4px;
+  }
+
+  nav.toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 36px;
+  }
+  nav.toc h2 {
+    margin: 0 0 12px;
+    font-size: 1.12rem;
+    color: var(--primary);
+    border: none;
+    padding: 0;
+  }
+  nav.toc ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  nav.toc li {
+    margin-bottom: 6px;
+  }
+  nav.toc a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  nav.toc a:hover { text-decoration: underline; }
+  nav.toc span { color: var(--muted); font-size: 0.92rem; }
+
+  .faq-section {
+    margin-bottom: 40px;
+    scroll-margin-top: 96px;
+  }
+  .faq-section h2 {
+    color: var(--primary);
+    font-size: 1.45rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin: 0 0 8px;
+  }
+  .sec-range {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-left: 6px;
+  }
+  .sec-focus {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0 0 18px;
+  }
+  .qa-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    scroll-margin-top: 100px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .qa-card:target {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(43, 91, 132, 0.16);
+  }
+  .qa-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .qa-card h3 {
+    margin: 0;
+    font-size: 1.12rem;
+    color: var(--accent);
+    line-height: 1.38;
+    flex: 1;
+  }
+  .q-num {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .copy-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--muted);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+  .copy-link-btn:hover {
+    border-color: var(--accent);
+    color: var(--primary);
+    background: var(--accent-soft);
+  }
+  .copy-link-btn.copied {
+    border-color: #86EFAC;
+    background: var(--ok-bg);
+    color: var(--ok);
+  }
+  .qa-card p {
+    margin: 0 0 10px;
+  }
+  .qa-card p:last-child { margin-bottom: 0; }
+  .hidden { display: none !important; }
+
+  .empty-state {
+    display: none;
+    text-align: center;
+    background: var(--card);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 32px 20px;
+    color: var(--muted);
+    margin: 24px 0;
+  }
+  .empty-state.visible { display: block; }
+
+  .back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    z-index: 40;
+    border: none;
+    background: var(--primary);
+    color: #FFFFFF;
+    border-radius: 999px;
+    padding: 10px 15px;
+    font-size: 0.88rem;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(27, 54, 93, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(8px);
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .back-to-top:hover {
+    background: var(--accent);
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 48px;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 24px 14px 72px; }
+    h1 { font-size: 1.55rem; }
+    .qa-card { padding: 15px 16px; }
+    .qa-head { flex-direction: column; gap: 8px; }
+    .copy-link-btn { align-self: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="container" id="top">
+  <header>
+    <h1>Большой ЧаВО по эфилизму: 55 главных вопросов и ответов</h1>
+    <p class="subtitle">Сводное справочное руководство (объединённая редакция 2026) · Проект Efilism RUS · Ноябрь 2026</p>
+    <p class="intro">Этот сводный справочник составлен на основе систематической монографии «Эфилизм: Философия абсолютного антинатализма» (2-е изд., 2026), базового философского FAQ, архива переводов выступлений Гэри (Inmendham) и аналитических разборов международной критики 2024–2026 годов. Все 55 вопросов сгруппированы в восемь тематических разделов — от базовых определений, нейрофеноменологии и биологии страдания до этики дикой природы, ненасилия, права на достойный выход, детерминизма, демографии и разбора популярных мифов.</p>
+  </header>
+
+  <div class="search-bar-wrap">
+    <div class="search-box">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="search" id="faqSearch" placeholder="Поиск по 55 вопросам и ответам (например: Бенатар, гора, веганство, ИИ, 17)..." autocomplete="off">
+      <button type="button" id="clearSearch" class="search-clear" title="Очистить поиск" aria-label="Очистить поиск">&times;</button>
+    </div>
+    <div class="search-meta">
+      <span id="searchCount">Показано: 55 из 55 вопросов</span>
+      <span>Нажмите «Ссылка» у любого вопроса, чтобы скопировать прямой адрес</span>
+    </div>
+  </div>
+
+  <nav class="toc" id="tocBlock">
+    <h2>Тематический указатель разделов (55 вопросов)</h2>
+    <ul>
+      <li><a href="#sec-1"><strong>Раздел 1.</strong> Основы, терминология и границы понятия <span>(Вопросы 1–7)</span></a></li><li><a href="#sec-2"><strong>Раздел 2.</strong> Биология, эволюция и природа страдания <span>(Вопросы 8–15)</span></a></li><li><a href="#sec-3"><strong>Раздел 3.</strong> Этика создания: согласие, риск и асимметрия <span>(Вопросы 16–23)</span></a></li><li><a href="#sec-4"><strong>Раздел 4.</strong> Дикая природа, животные и веганство <span>(Вопросы 24–30)</span></a></li><li><a href="#sec-5"><strong>Раздел 5.</strong> Ненасилие, право на выход, промортализм и «красная кнопка» <span>(Вопросы 31–37)</span></a></li><li><a href="#sec-6"><strong>Раздел 6.</strong> Детерминизм, свобода воли, моральный реализм и религия <span>(Вопросы 38–45)</span></a></li><li><a href="#sec-7"><strong>Раздел 7.</strong> Общество, демография, ИИ и будущее <span>(Вопросы 46–50)</span></a></li><li><a href="#sec-8"><strong>Раздел 8.</strong> Психология, стереотипы и ответы на популярную критику <span>(Вопросы 51–55)</span></a></li>
+    </ul>
+  </nav>
+
+  <div id="emptyState" class="empty-state">
+    По вашему запросу ничего не найдено. Попробуйте другое ключевое слово или очистите строку поиска.
+  </div>
+
+  <main>
+    <section id="sec-1" class="faq-section"><h2>Раздел 1. Основы, терминология и границы понятия <span class="sec-range">Вопросы 1–7</span></h2><p class="sec-focus">Определение эфилизма, отличия от антинатализма и VHEMT, минимальное этическое ядро, границы сентиентности.</p><article class="qa-card" id="q-1" data-qnum="1"><div class="qa-head"><h3><span class="q-num">Вопрос 1.</span> Что такое эфилизм и откуда взялось это название?</h3><button type="button" class="copy-link-btn" data-anchor="#q-1" title="Скопировать прямую ссылку на вопрос 1" aria-label="Скопировать ссылку на вопрос 1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Эфилизм (англ. efilism — слово «life», прочитанное задом наперёд) — это философская позиция абсолютного сентиоцентрического антинатализма. В её центре лежит вывод о том, что воспроизводство чувствующей жизни, способной испытывать боль и страдание, этически недопустимо и должно быть прекращено максимально мягким, ненасильственным и разумным путём.</p><p>Термин ввёл на YouTube философ-пессимист Гэри (Inmendham), чтобы отделить сентиоцентрический подход (охватывающий всех чувствующих существ — и людей, и животных) от узкого антропоцентричного антинатализма и от ценностного нигилизма. В систематической монографии «Эфилизм: Философия абсолютного антинатализма» (2026) эта позиция переведена из устной полемики в строгую дедуктивно-эмпирическую систему.</p></div></article>
+<article class="qa-card" id="q-2" data-qnum="2"><div class="qa-head"><h3><span class="q-num">Вопрос 2.</span> Чем эфилизм отличается от обычного антинатализма, чайлдфри и VHEMT?</h3><button type="button" class="copy-link-btn" data-anchor="#q-2" title="Скопировать прямую ссылку на вопрос 2" aria-label="Скопировать ссылку на вопрос 2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Чайлдфри — это личный жизненный выбор не заводить детей (по бытовым, финансовым или карьерным причинам), не содержащий универсального этического суждения о воспроизводстве жизни.</p><p>Классический (антропоцентричный) антинатализм признаёт неэтичным рождение новых людей, но на практике часто игнорирует страдания диких животных. Движение за добровольное вымирание человечества (VHEMT, основано Лесом Найтом в 1991 году) и вовсе призывает людей исчезнуть «ради сохранения и процветания дикой природы».</p><p>Эфилизм отвергает романтизацию дикой природы: если боль морально значима сама по себе, уход одного лишь человечества оставляет триллионы диких животных в вечной мясорубке естественного отбора. Поэтому эфилизм распространяет антинаталистический принцип на всю чувствующую биосферу.</p></div></article>
+<article class="qa-card" id="q-3" data-qnum="3"><div class="qa-head"><h3><span class="q-num">Вопрос 3.</span> Правда ли, что эфилизм — это «ненависть к людям» (мизантропия) или «культ смерти»?</h3><button type="button" class="copy-link-btn" data-anchor="#q-3" title="Скопировать прямую ссылку на вопрос 3" aria-label="Скопировать ссылку на вопрос 3"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Нет, это прямое искажение смысла. Мизантроп ненавидит людей как вид и нередко идеализирует «чистую природу». Эфилизм, напротив, исходит из сострадания ко всем чувствующим существам — и людям, и животным — как к уязвимым жертвам слепого эволюционного механизма.</p><p>Эфилизм также не является «культом смерти»: сама смерть и процесс умирания оцениваются в нём резко отрицательно. Главный тезис состоит не в том, что «умирать хорошо», а в том, что «лучше не запускать новую жизнь, обречённую на болезни, старение и смерть».</p></div></article>
+<article class="qa-card" id="q-4" data-qnum="4"><div class="qa-head"><h3><span class="q-num">Вопрос 4.</span> Какова роль Гэри (Inmendham) в эфилизме, и чем систематический эфилизм (монография 2026 года) отличается от устной полемики?</h3><button type="button" class="copy-link-btn" data-anchor="#q-4" title="Скопировать прямую ссылку на вопрос 4" aria-label="Скопировать ссылку на вопрос 4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Гэри (Inmendham) — создатель термина и автор многолетнего видеоархива, сформулировавший ключевые интуиции эфилизма: сентиоцентризм, критику дикой природы, образ «архитектуры нужды» и требование честной оценки итогового баланса жизни.</p><p>В монографии 2026 года проведена строгая трёхслойная демаркация: первичная устная полемика Гэри и промежуточные интернет-компиляции отделены от академически выверенной философской реконструкции. Систематический эфилизм сохраняет сентиоцентрическое этическое ядро, но очищает его от частных спорных гипотез (например, нестандартных взглядов Гэри на квантовую физику или климатологию) и от излишне резкой риторики.</p></div></article>
+<article class="qa-card" id="q-5" data-qnum="5"><div class="qa-head"><h3><span class="q-num">Вопрос 5.</span> Что такое «Минимальное этическое ядро» эфилизма? Обязательно ли быть физикалистом и детерминистом, чтобы его принять?</h3><button type="button" class="copy-link-btn" data-anchor="#q-5" title="Скопировать прямую ссылку на вопрос 5" aria-label="Скопировать ссылку на вопрос 5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Нет, не обязательно. Монография (гл. 32.4) построена модульно: её «Минимальное этическое ядро» состоит всего из четырёх проверяемых посылок, для принятия которых не требуется разделять специфическую онтологию физикализма или жёсткого детерминизма.</p><p>Достаточно признать четыре факта: (1) до создания нового субъекта не существует его предсуществующей нужды в бытии; (2) любое биологическое рождение сопряжено с неустранимым риском тяжёлых, некомпенсируемых страданий; (3) невозможно получить предварительное согласие создаваемого существа; (4) недопустимо навязывать третьему лицу такой риск ради ожидаемых благ или интересов уже живущих. Из этих посылок следует запрет на воспроизводство.</p></div></article>
+<article class="qa-card" id="q-6" data-qnum="6"><div class="qa-head"><h3><span class="q-num">Вопрос 6.</span> Почему эфилизм говорит именно о чувствующей (сентиентной) жизни, а не о бактериях, растениях или вирусах?</h3><button type="button" class="copy-link-btn" data-anchor="#q-6" title="Скопировать прямую ссылку на вопрос 6" aria-label="Скопировать ссылку на вопрос 6"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Потому что объективный вред и благо возникают только там, где есть субъективный опыт (способность переживать боль, страх, дискомфорт или облегчение). Повреждение камня, компьютерной платы, вируса, бактерии или растения — это физическое или биохимическое событие, но не страдание: внутри них некому переживать «мне плохо».</p><p>В полемике с Каримом Акермой и сторонниками «чувствующей клетки» (А. Ребер) и Гэри, и монография (гл. 19–22) чётко разграничивают простую химическую реакцию на стимул и нейронную сентиентность. Нечувствующая ДНК (бактерии, растения) интересует эфилизм лишь инструментально — как возможная база для повторной эволюции нервных систем в далёком будущем.</p></div></article>
+<article class="qa-card" id="q-7" data-qnum="7"><div class="qa-head"><h3><span class="q-num">Вопрос 7.</span> Не является ли сам термин «эфилизм» избыточным или «испорченным» в интернете?</h3><button type="button" class="copy-link-btn" data-anchor="#q-7" title="Скопировать прямую ссылку на вопрос 7" aria-label="Скопировать ссылку на вопрос 7"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Часть критиков (например, Фернандо Ольшевский или анонимные авторы на Reddit) утверждает, что достаточно говорить о «философском пессимизме» или «антинатализме». Однако на практике оба этих термина слишком размыты: пессимизм часто ограничивается созерцательной меланхолией, а мейнстримный антинатализм сводится к отказу от рождения людей при равнодушии к дикой природе.</p><p>Термин «эфилизм» выполняет точную аналитическую функцию — он фиксирует универсальный сентиоцентрический антинатализм без видовых исключений. В академической среде его синонимом выступает термин «абсолютный сентиоцентрический антинатализм», но сама суть позиции от смены ярлыка не меняется.</p></div></article></section><section id="sec-2" class="faq-section"><h2>Раздел 2. Биология, эволюция и природа страдания <span class="sec-range">Вопросы 8–15</span></h2><p class="sec-focus">ДНК как «первичная проблемная архитектура», архитектура нужды, нейрофеноменология реального вреда, асимметрия боли и удовольствия, эффект Поллианны.</p><article class="qa-card" id="q-8" data-qnum="8"><div class="qa-head"><h3><span class="q-num">Вопрос 8.</span> Почему эфилизм называет эволюцию и ДНК «первичной проблемной архитектурой»?</h3><button type="button" class="copy-link-btn" data-anchor="#q-8" title="Скопировать прямую ссылку на вопрос 8" aria-label="Скопировать ссылку на вопрос 8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Потому что молекула ДНК и естественный отбор не имеют цели сделать живые существа счастливыми. Единственный критерий отбора — устойчивое копирование генов. Боль, голод, страх, тревога и болезни закрепились в эволюции именно потому, что они эффективно заставляют организм выживать и размножаться, не заботясь о его благополучии.</p><p>В монографии (гл. 16–24) показано: пока работает биологический конвейер репликации, проблема страдания не является временной «неисправностью» — она встроена в саму архитектуру живой материи.</p></div></article>
+<article class="qa-card" id="q-9" data-qnum="9"><div class="qa-head"><h3><span class="q-num">Вопрос 9.</span> Что такое «архитектура нужды» и почему удовольствия не перекрывают страдания?</h3><button type="button" class="copy-link-btn" data-anchor="#q-9" title="Скопировать прямую ссылку на вопрос 9" aria-label="Скопировать ссылку на вопрос 9"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Живой организм — это открытая система, постоянно требующая энергии, защиты и регуляции. Чтобы заставить его поддерживать себя, нервная система генерирует непрерывный поток дефицитов: голод, жажду, усталость, холод, одиночество, скуку и физическую боль. В архиве Гэри это наглядно описано «аргументом кнута»: подавляющее большинство удовольствий — это временное ослабление заранее созданного дискомфорта.</p><p>Даже если признать самостоятельный позитивный характер отдельных радостей (как уточняется в монографии, гл. 26, и в выпуске Гэри WTF #980), структура переживаний глубоко асимметрична: потолок удовольствия краток и ограничен адаптацией, тогда как глубина и длительность страданий (хроническая боль, онкология, деменция, насильственная гибель) несоизмеримо велики.</p></div></article>
+<article class="qa-card" id="q-10" data-qnum="10"><div class="qa-head"><h3><span class="q-num">Вопрос 10.</span> Что такое «реальный вред» и как нейрофеноменология обосновывает его существование?</h3><button type="button" class="copy-link-btn" data-anchor="#q-10" title="Скопировать прямую ссылку на вопрос 10" aria-label="Скопировать ссылку на вопрос 10"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Эфилизм опирается на нейрофеноменологический реализм: вред не является произвольной языковой выдумкой или «просто мнением». В нервной системе чувствующего существа ноцицепция и сопутствующие нейрофизиологические процессы выступают физическим субстратом, отрицательная валентность — непосредственным переживаемым качеством вреда, а феноменальная прозрачность нервной системы (термин нейрофилософа Томаса Метцингера) объясняет, почему это состояние переживается субъектом как несомненная, неотменимая реальность.</p><p>Даже если вы знаете, что боль кодируется электрическими импульсами в мозге, само это знание не отменяет её жгучей непосредственности. Именно эта неустранимая отрицательная валентность переживания служит объективным эмпирическим якорем для всей аксиологии эфилизма.</p></div></article>
+<article class="qa-card" id="q-11" data-qnum="11"><div class="qa-head"><h3><span class="q-num">Вопрос 11.</span> Отрицает ли эфилизм реальность радости, любви, красоты и смысла жизни?</h3><button type="button" class="copy-link-btn" data-anchor="#q-11" title="Скопировать прямую ссылку на вопрос 11" aria-label="Скопировать ссылку на вопрос 11"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Нет. Систематический эфилизм не утверждает, что в жизни нет подлинной радости, искусства, дружбы или любви (монография, гл. 26 и 38). Вопрос стоит иначе: имеет ли кто-либо моральное право покупать ожидаемую радость одного существа ценой несогласованного риска тяжёлого вреда для него же или для других существ?</p><p>Радость имеет ценность для уже живущего человека, помогая ему достойно и с меньшей болью прожить отпущенный срок. Но нерождённый субъект не нуждается в радости и не страдает от её отсутствия.</p></div></article>
+<article class="qa-card" id="q-12" data-qnum="12"><div class="qa-head"><h3><span class="q-num">Вопрос 12.</span> Разве эволюция не стремится к гармонии, балансу и «выживанию лучшего»?</h3><button type="button" class="copy-link-btn" data-anchor="#q-12" title="Скопировать прямую ссылку на вопрос 12" aria-label="Скопировать ссылку на вопрос 12"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Представление о «гармонии природы» — иллюзия наблюдателя. В дикой природе преобладает так называемый r-отбор: огромное большинство видов производит десятки, сотни или тысячи детёнышей, из которых до взрослого возраста доживают единицы. Остальные быстро погибают от голода, холода, паразитов и хищников.</p><p>Видимое «равновесие» экосистем поддерживается только тем, что падальщики и хищники мгновенно утилизируют тела погибших животных, скрывая масштаб ежедневной гибели от человеческого взгляда.</p></div></article>
+<article class="qa-card" id="q-13" data-qnum="13"><div class="qa-head"><h3><span class="q-num">Вопрос 13.</span> Как эфилизм относится к идее, что «страдание закаляет и делает человека сильнее»?</h3><button type="button" class="copy-link-btn" data-anchor="#q-13" title="Скопировать прямую ссылку на вопрос 13" aria-label="Скопировать ссылку на вопрос 13"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Это классическая психологическая рационализация (ошибка выжившего). Небольшие трудности действительно могут учить навыкам адаптации внутри уже начавшейся жизни, но крайние страдания — неизлечимые болезни, пытки, тяжёлые травмы, гибель близких — никого не «закаляют», а ломают и уничтожают психику и тело.</p><p>Кроме того, «закалка» нужна лишь для того, чтобы выдерживать новые удары той же самой враждебной среды. Создавать нового человека ради того, чтобы он «героически преодолевал» созданные для него проблемы, логически несостоятельно.</p></div></article>
+<article class="qa-card" id="q-14" data-qnum="14"><div class="qa-head"><h3><span class="q-num">Вопрос 14.</span> Почему нельзя считать «среднюю» жизнь «достаточно хорошей» для оправдания рождения?</h3><button type="button" class="copy-link-btn" data-anchor="#q-14" title="Скопировать прямую ссылку на вопрос 14" aria-label="Скопировать ссылку на вопрос 14"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Во-первых, самооценка «средней» жизни систематически завышена психологическими защитными механизмами. Во-вторых, при рождении ребёнка родители не гарантируют ему «средний» исход — они запускают причинную лотерею, в которой всегда присутствует ненулевая вероятность катастрофического исхода (тяжёлая генетическая патология, психическое расстройство, насилие, мучительная смерть).</p><p>В-третьих, даже благополучная человеческая биография оплачивается косвенным вредом (потреблением ресурсов, эксплуатацией животных) и неизбежно завершается старением, утратами и умиранием.</p></div></article>
+<article class="qa-card" id="q-15" data-qnum="15"><div class="qa-head"><h3><span class="q-num">Вопрос 15.</span> Что такое психологическая защита продолжения (эффект Поллианны, когнитивное искажение оптимизма)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-15" title="Скопировать прямую ссылку на вопрос 15" aria-label="Скопировать ссылку на вопрос 15"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Эволюция отобрала мозги, склонные преуменьшать прошлую боль, вытеснять страх смерти и переоценивать шансы на успех — иначе организм терял бы мотивацию действовать и размножаться. В психологии это описывается как эффект Поллианны, когнитивное искажение оптимизма и гедоническая адаптация (подробно разобрано в книге Дэвида Бенатара и в гл. 34 монографии).</p><p>Из-за этих встроенных фильтров люди искренне оценивают свою жизнь намного выше, чем показывает объективный учёт их ежедневного дискомфорта, болезней, тревог и нереализованных желаний.</p></div></article></section><section id="sec-3" class="faq-section"><h2>Раздел 3. Этика создания: согласие, риск и асимметрия <span class="sec-range">Вопросы 16–23</span></h2><p class="sec-focus">Согласие, принцип антижертвенного защитного порога, статус асимметрии Бенатара, ошибка четырёх терминов, идеальные миры.</p><article class="qa-card" id="q-16" data-qnum="16"><div class="qa-head"><h3><span class="q-num">Вопрос 16.</span> Как устроен аргумент об отсутствии согласия на рождение? Ведь у несуществующего нет прав и желаний!</h3><button type="button" class="copy-link-btn" data-anchor="#q-16" title="Скопировать прямую ссылку на вопрос 16" aria-label="Скопировать ссылку на вопрос 16"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Критики часто возражают: «Невозможно спросить согласия у того, кого нет, значит, аргумент бессмыслен». Но в этике невозможность получить согласие никогда не превращается в разрешение на опасное вмешательство.</p><p>Если человек без сознания, мы вправе вмешаться без его согласия только для того, чтобы спасти его от уже грозящего вреда (например, провести экстренную операцию), но не для того, чтобы вовлечь его в рискованную азартную игру ради возможного выигрыша. До зачатия нет никакой беды, от которой нужно «спасать» нерождённого, поэтому невозможность согласия выступает строгим запретом, а не лазейкой.</p></div></article>
+<article class="qa-card" id="q-17" data-qnum="17"><div class="qa-head"><h3><span class="q-num">Вопрос 17.</span> Что такое «принцип антижертвенного защитного порога» и «конститутивный риск»?</h3><button type="button" class="copy-link-btn" data-anchor="#q-17" title="Скопировать прямую ссылку на вопрос 17" aria-label="Скопировать ссылку на вопрос 17"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Это несущая этическая конструкция систематического эфилизма (монография, гл. 31–33). Конститутивный риск — это риск тяжёлого и необратимого вреда, который нельзя отделить от самого факта создания биологического субъекта: вы не можете «выключить» уязвимость к боли, болезням и смерти до рождения.</p><p>Принцип антижертвенного защитного порога гласит: в отсутствие предсуществующей нужды и предварительного согласия категорически недопустимо создавать нового носителя конститутивного риска ради ожидаемых будущих благ. Ничьё ожидаемое удовольствие не даёт права приносить другого субъекта в потенциальную жертву.</p></div></article>
+<article class="qa-card" id="q-18" data-qnum="18"><div class="qa-head"><h3><span class="q-num">Вопрос 18.</span> Зависит ли эфилизм от аксиологической асимметрии Дэвида Бенатара? Что, если четвёртый квадрант Бенатара ошибочен?</h3><button type="button" class="copy-link-btn" data-anchor="#q-18" title="Скопировать прямую ссылку на вопрос 18" aria-label="Скопировать ссылку на вопрос 18"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Нет, не зависит. Четвёртый квадрант Бенатара («отсутствие удовольствия в небытии не плохо, если нет субъекта, который был бы его лишён») — самая оспариваемая часть его книги Better Never to Have Been (2006). Критики указывают, что Бенатар не даёт независимого дедуктивного доказательства «аргумента депривации» и смешивает аксиологические оценки с деонтологическими обязанностями.</p><p>Систематический эфилизм полностью устойчив к падению асимметрии Бенатара: он строит запрет на воспроизводство напрямую на деонтологическом уровне — через отсутствие предсуществующей нужды и недопустимость навязывания конститутивного риска, не нуждаясь в спорных сравнениях «небытия с бытием».</p></div></article>
+<article class="qa-card" id="q-19" data-qnum="19"><div class="qa-head"><h3><span class="q-num">Вопрос 19.</span> Как ответить на возражение об «ошибке четырёх терминов» (небытие = Null, значит, с бытием его якобы нельзя сравнивать)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-19" title="Скопировать прямую ссылку на вопрос 19" aria-label="Скопировать ссылку на вопрос 19"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>В дискуссиях (в частности, на r/DebateAVegan в декабре 2025 года) звучит довод: «Не страдать» — это состояние живого мозга, а небытие равно Null, поэтому нельзя сказать, что нерождённому «лучше не родиться».</p><p>Это возражение опровергается двумя способами. Во-первых, сведением к абсурду: если бытие и небытие абсолютно несравнимы из-за статуса Null, то намеренное создание ребёнка, обречённого на непрерывные пытки с рождения до смерти, пришлось бы объявить морально нейтральным. Во-вторых, эфилизм оценивает не «выгоду несуществующего», а допустимость действия уже существующего агента: запускать ли новый уязвимый носитель боли там, где до этого нет никакой проблемы.</p></div></article>
+<article class="qa-card" id="q-20" data-qnum="20"><div class="qa-head"><h3><span class="q-num">Вопрос 20.</span> А если создать гипотетическое «всемогущее безболезненное существо» или идеальную жизнь без боли?</h3><button type="button" class="copy-link-btn" data-anchor="#q-20" title="Скопировать прямую ссылку на вопрос 20" aria-label="Скопировать ссылку на вопрос 20"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Этот мысленный эксперимент бьёт по схеме Бенатара (которая вынуждена объявлять безграничное чистое счастье бесполезным), но совершенно не затрагивает систематический эфилизм.</p><p>В монографии (гл. 33.1) прямо зафиксировано: в гипотетической системе, где отрицательная валентность, уязвимость и вред физически невозможны, запрет по конститутивному риску просто не активируется. Однако в реальной биологической Вселенной размножение никогда не порождает неуязвимых безболезненных богов — оно воспроизводит хрупкие организмы, гарантированно подверженные страданию и распаду.</p></div></article>
+<article class="qa-card" id="q-21" data-qnum="21"><div class="qa-head"><h3><span class="q-num">Вопрос 21.</span> Но ведь большинство людей говорят, что рады, что родились! Разве ретроспективное согласие не оправдывает рождение?</h3><button type="button" class="copy-link-btn" data-anchor="#q-21" title="Скопировать прямую ссылку на вопрос 21" aria-label="Скопировать ссылку на вопрос 21"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Нет, по двум причинам. Во-первых, с точки зрения логики и права последующее одобрение удачного исхода не оправдывает исходную рискованную ставку чужим благополучием: если кто-то без разрешения сыграл в русскую рулетку с чужой головой и выстрела не произошло, а жертва потом сказала «ну, обошлось», сам поступок не становится этичным.</p><p>Во-вторых, родители заранее не знают, окажется ли их конкретный ребёнок среди тех, кто «рад», или среди тех, чья жизнь превратится в кошмар. Выигрыш одних людей не компенсирует сломанную судьбу других.</p></div></article>
+<article class="qa-card" id="q-22" data-qnum="22"><div class="qa-head"><h3><span class="q-num">Вопрос 22.</span> Неужели даже в любящей, обеспеченной и безопасной семье рождать детей неэтично?</h3><button type="button" class="copy-link-btn" data-anchor="#q-22" title="Скопировать прямую ссылку на вопрос 22" aria-label="Скопировать ссылку на вопрос 22"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Хорошие родители действительно снижают часть социальных рисков, но они не способны устранить конститутивный риск биологического существования. Никакое богатство и никакая любовь не страхуют от онкологии, нейродегенерации, тяжёлой депрессии, несчастных случаев, войн, потери близких и неизбежного старения.</p><p>Поэтому любовь и забота являются безусловным долгом перед уже рождёнными детьми, но не могут служить гарантией безопасности для создания нового человека.</p></div></article>
+<article class="qa-card" id="q-23" data-qnum="23"><div class="qa-head"><h3><span class="q-num">Вопрос 23.</span> Почему «даже если риск невелик, шанс на счастье стоит ставки» — логическая ошибка?</h3><button type="button" class="copy-link-btn" data-anchor="#q-23" title="Скопировать прямую ссылку на вопрос 23" aria-label="Скопировать ссылку на вопрос 23"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Эта логика работает только тогда, когда вы ставите на кон собственные интересы ради собственной выгоды. При рождении ребёнка вы делаете ставку, в которой потенциальный проигрыш (боль, болезнь, страх, смерть) полностью ложится на другого субъекта, который никогда не просил делать эту ставку и не испытывал никакой нехватки счастья до рождения.</p><p>Асимметрия ставок очевидна: если не играть, никто ничего не теряет; если сыграть, появляется реальный риск необратимой катастрофы для живого существа.</p></div></article></section><section id="sec-4" class="faq-section"><h2>Раздел 4. Дикая природа, животные и веганство <span class="sec-range">Вопросы 24–30</span></h2><p class="sec-focus">«Слон и блоха», «бремя интеллекта», веганство, домашние хищники, критика VHEMT, парадокс Мориоки.</p><article class="qa-card" id="q-24" data-qnum="24"><div class="qa-head"><h3><span class="q-num">Вопрос 24.</span> Почему эфилизм уделяет столько внимания дикой природе («слон и блоха»)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-24" title="Скопировать прямую ссылку на вопрос 24" aria-label="Скопировать ссылку на вопрос 24"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>По масштабу численности и интенсивности страданий человечество составляет крошечную долю чувствующей биосферы. По яркому образу Гэри (Inmendham), если совокупное страдание на Земле — это огромный слон, то человеческие проблемы — лишь блоха на его спине, а сам слон — это триллионы диких млекопитающих, птиц, рептилий, рыб и иных чувствующих организмов.</p><p>Последовательная этика, признающая объективную значимость боли, не имеет права проводить произвольную границу по биологическому виду (видовая дискриминация / специесизм).</p></div></article>
+<article class="qa-card" id="q-25" data-qnum="25"><div class="qa-head"><h3><span class="q-num">Вопрос 25.</span> Разве дикая природа — не прекрасная, гармоничная и «естественная» среда, куда человеку нельзя вмешиваться?</h3><button type="button" class="copy-link-btn" data-anchor="#q-25" title="Скопировать прямую ссылку на вопрос 25" aria-label="Скопировать ссылку на вопрос 25"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Отождествление «естественного» с «хорошим» — классическая натуралистическая ошибка (нарушение принципа Юма). В природе одинаково «естественны» малярия, бешенство, поедание жертвы заживо хищниками, паразиты, выедающие глаза изнутри, лесные пожары и массовая гибель детёнышей от голода.</p><p>Вся человеческая медицина и этика существуют именно для того, чтобы противостоять слепой жестокости природы. В монографии (гл. 39–40) подчёркивается: дикая природа нуждается не в романтизации, а в трезвой научной оценке без инженерной самоуверенности.</p></div></article>
+<article class="qa-card" id="q-26" data-qnum="26"><div class="qa-head"><h3><span class="q-num">Вопрос 26.</span> Что такое «бремя интеллекта» и почему аргумент Бенатара о том, что «животные не моральные агенты», не снимает ответственности с человека?</h3><button type="button" class="copy-link-btn" data-anchor="#q-26" title="Скопировать прямую ссылку на вопрос 26" aria-label="Скопировать ссылку на вопрос 26"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Дэвид Бенатар в интервью объясняет своё невмешательство в дикую природу тем, что животные не являются моральными агентами и «не совершают морального проступка», размножаясь. Но как справедливо возражает Гэри (в выпусках WTF #892 и WTF #970), отсутствие морального агентства никогда не отменяет обязанности помочь жертве или остановить вред.</p><p>Если маленький ребёнок или невменяемый человек не понимает последствий своих действий, это не повод бросить их на произвол судьбы — наоборот, именно наличие разума и способности просчитывать последствия возлагает на человечество «бремя интеллекта» (ответственность наиболее компетентного субъекта).</p></div></article>
+<article class="qa-card" id="q-27" data-qnum="27"><div class="qa-head"><h3><span class="q-num">Вопрос 27.</span> Как эфилизм относится к веганству и почему Гэри критикует «религиозный веганизм»?</h3><button type="button" class="copy-link-btn" data-anchor="#q-27" title="Скопировать прямую ссылку на вопрос 27" aria-label="Скопировать ссылку на вопрос 27"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Эфилизм полностью поддерживает отказ от эксплуатации и убийства животных (в том числе растительное питание как способ не финансировать животноводство). Ни один последовательный сентиоцентрист не может оправдывать промышленные бойни ради вкусового комфорта.</p><p>Вместе с тем Гэри критикует превращение веганства в «религиозный культ личной чистоты» — когда человек носит свою диету как медаль за героизм, травит других за бытовые слабости и при этом закрывает глаза на то, что промышленное животноводство — лишь часть гораздо более масштабной трагедии воспроизводства жизни и дикой природы.</p></div></article>
+<article class="qa-card" id="q-28" data-qnum="28"><div class="qa-head"><h3><span class="q-num">Вопрос 28.</span> Как быть с дилеммой содержания домашних хищников (например, кошек)? Призывает ли эфилизм «усыплять домашних животных»?</h3><button type="button" class="copy-link-btn" data-anchor="#q-28" title="Скопировать прямую ссылку на вопрос 28" aria-label="Скопировать ссылку на вопрос 28"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Систематический эфилизм категорически не призывает к жестокому обращению или произвольному умерщвлению домашних животных. Вместе с тем он честно признаёт реальную этическую дилемму, известную в академической биоэтике: содержание облигатного хищника на коммерческом мясном корме на протяжении 15 лет косвенно оплачивает забой сотен других чувствующих животных.</p><p>Именно поэтому скандальные ролики вроде видео The Internet Investigator (2026) манипулируют зрителем, объявляя саму постановку этой дилеммы «безумием». Зрелый подход эфилизма включает: (1) жёсткий запрет на разведение и покупку новых питомцев у заводчиков; (2) обязательную стерилизацию существующих животных; (3) ответственное исследование безопасных синтетических/растительных альтернатив корма без жестоких экспериментов и уважение к благополучию уже живущих подопечных.</p></div></article>
+<article class="qa-card" id="q-29" data-qnum="29"><div class="qa-head"><h3><span class="q-num">Вопрос 29.</span> Если вымрет только человечество (сценарий VHEMT), станет ли на Земле меньше страданий?</h3><button type="button" class="copy-link-btn" data-anchor="#q-29" title="Скопировать прямую ссылку на вопрос 29" aria-label="Скопировать ссылку на вопрос 29"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Нет, а с высокой вероятностью совокупный объём страданий даже вырастет. После исчезновения городов, дорог, пашен и инфраструктуры дикая биосфера быстро восстановит плотность популяций на освоенных территориях, увеличив число диких животных, обречённых на хищничество, паразитов и голод на сотни миллионов лет вперёд.</p><p>Более того, уход единственного разумного вида навсегда лишает планету единственного агента, потенциально способного осознать масштаб биосферного страдания и искать гуманные пути его снижения.</p></div></article>
+<article class="qa-card" id="q-30" data-qnum="30"><div class="qa-head"><h3><span class="q-num">Вопрос 30.</span> Что такое парадокс сентиоцентрического антинатализма (Масахиро Мориока, 2026) — нужно ли людям выживать ради спасения животных?</h3><button type="button" class="copy-link-btn" data-anchor="#q-30" title="Скопировать прямую ссылку на вопрос 30" aria-label="Скопировать ссылку на вопрос 30"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Японский философ Масахиро Мориока в статье 2026 года (Cambridge Quarterly of Healthcare Ethics) сформулировал изящный парадокс: если люди обязаны остановить страдания диких животных, но не могут сделать это в одном поколении, то последовательный сентиоцентрический антинаталист якобы обязан продолжать размножаться ради будущей помощи животным.</p><p>В монографии и аналитических разборах Efilism RUS этот парадокс снимается разграничением строгой деонтологической обязанности и стратегического предела: этика защитного порога запрещает приносить новых несогласных детей в жертву ради неопределённого «проекта спасения дикой природы». Сокращение вреда в дикой природе — задача, которую следует решать в пределах доступных технологий и знаний без создания новых невольных «солдат».</p></div></article></section><section id="sec-5" class="faq-section"><h2>Раздел 5. Ненасилие, право на выход, промортализм и «красная кнопка» <span class="sec-range">Вопросы 31–37</span></h2><p class="sec-focus">Запрет насилия, отличие от промортализма, «красная кнопка» Смарта, критика Бенатара, право на выход, Палм-Спрингс и ProExtinction.</p><article class="qa-card" id="q-31" data-qnum="31"><div class="qa-head"><h3><span class="q-num">Вопрос 31.</span> Одобряет ли эфилизм насилие, террор или принудительное уничтожение людей?</h3><button type="button" class="copy-link-btn" data-anchor="#q-31" title="Скопировать прямую ссылку на вопрос 31" aria-label="Скопировать ссылку на вопрос 31"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Категорически нет. Систематический эфилизм (монография, гл. 33, 44, 49) проводит строгую границу между превентивным отказом от создания новых субъектов и безусловным уважением к автономии и неприкосновенности уже живущих существ.</p><p>Любые формы индивидуального насилия, террора, саботажа или принудительного причинения вреда не только этически недопустимы, но и практически контрпродуктивны: они умножают реальные страдания, не останавливают воспроизводство и дискредитируют просветительскую работу. Даже на ныне заблокированном сабреддите r/Efilism второе правило прямо запрещало любые призывы к насилию под угрозой бана.</p></div></article>
+<article class="qa-card" id="q-32" data-qnum="32"><div class="qa-head"><h3><span class="q-num">Вопрос 32.</span> Чем эфилизм отличается от промортализма? Почему эфилисты сами продолжают жить?</h3><button type="button" class="copy-link-btn" data-anchor="#q-32" title="Скопировать прямую ссылку на вопрос 32" aria-label="Скопировать ссылку на вопрос 32"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Промортализм утверждает, что для любого живущего существа всегда лучше немедленно умереть. Эфилизм — это позиция о недопустимости создания новых жизней (антинатализм), а не предписание немедленной смерти.</p><p>Уже существующие люди имеют привязанности, незавершённые дела, страх перед болезненным умиранием и ответственность перед близкими и животными. Кроме того, как подчёркивает Гэри (WTF #970), на практике нам вообще не нужно, чтобы живущие люди умирали — для решения проблемы достаточно остановить появление новых поколений, а живущий сторонник эфилизма приносит пользу именно тем, что снижает страдания и просвещает других.</p></div></article>
+<article class="qa-card" id="q-33" data-qnum="33"><div class="qa-head"><h3><span class="q-num">Вопрос 33.</span> Как систематический эфилизм относится к мысленному эксперименту с «красной кнопкой» (кнопкой Дж. Дж. С. Смарта)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-33" title="Скопировать прямую ссылку на вопрос 33" aria-label="Скопировать ссылку на вопрос 33"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>«Красная кнопка» (изначально сформулированная Дж. Дж. С. Смартом в 1958 году как критика негативного утилитаризма — «доброжелательный разрушитель мира») — это чисто гипотетический мысленный эксперимент: мгновенное, абсолютно безболезненное и полное прекращение всей чувствующей жизни без каких-либо побочных последствий.</p><p>В устной полемике Гэри использует эту кнопку как диагностический тест на честность консеквенциалистской оценки («готов ли ты предотвратить триллионы часов будущих пыток ценой мгновенного безболезненного финала?»). При этом и Гэри, и монография чётко отделяют эту теоретическую модель от реальной практики: в реальном мире никакой «стерильной кнопки» не существует, а любые попытки насильственного вмешательства обернулись бы катастрофическим ростом страданий.</p></div></article>
+<article class="qa-card" id="q-34" data-qnum="34"><div class="qa-head"><h3><span class="q-num">Вопрос 34.</span> Почему Гэри (Inmendham) жёстко критикует Дэвида Бенатара за отказ от практических мер и «красной кнопки»?</h3><button type="button" class="copy-link-btn" data-anchor="#q-34" title="Скопировать прямую ссылку на вопрос 34" aria-label="Скопировать ссылку на вопрос 34"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>В цикле из семи переведённых разборов (включая WTF #889, #892, #945, #970) Гэри хвалит раннего Бенатара за логику асимметрии и тезис о применимости аргументов к животным, но обвиняет позднего Бенатара в отступлении от собственных выводов.</p><p>Главные претензии Гэри: Бенатар называет деторождение «серьёзным вредом», но отвергает любые правовые и социальные стимулы (даже отмену пронаталистических субсидий при демократическом большинстве), прикрываясь аргументом человеческой погрешимости (фаллибилизма), и фактически бросает диких животных на произвол судьбы. С точки зрения Гэри, «отказ решать — это тоже решение» в пользу статус-кво.</p></div></article>
+<article class="qa-card" id="q-35" data-qnum="35"><div class="qa-head"><h3><span class="q-num">Вопрос 35.</span> Что означает «право на достойный выход» (медицинская автономия и заблаговременное волеизъявление) в эфилизме?</h3><button type="button" class="copy-link-btn" data-anchor="#q-35" title="Скопировать прямую ссылку на вопрос 35" aria-label="Скопировать ссылку на вопрос 35"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Поскольку никто не давал согласия на вход в жизнь, зрелый человек должен иметь право на мирный, безболезненный и юридически защищённый выход из неё — особенно при неизлечимых болезнях и невыносимых страданиях (монография, гл. 42–43).</p><p>Эфилизм решительно против импульсивных действий и поддерживает строгие правовые предохранители: медицинскую проверку отсутствия внешнего давления и острого временного кризиса, период спокойного обдумывания, институт заблаговременного волеизъявления (прижизненной директивы) и полное право противников этой меры заранее зафиксировать отказ от неё для себя. Как показывает статистика штата Орегон, само наличие законного «запасного выхода» снижает тревогу, и значительная часть получивших доступ пациентов им так и не пользуется.</p></div></article>
+<article class="qa-card" id="q-36" data-qnum="36"><div class="qa-head"><h3><span class="q-num">Вопрос 36.</span> Почему эфилизм категорически осудил теракт у клиники ЭКО в Палм-Спрингс (2025) и какое отношение к нему имеет Адам Лэнза (2012)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-36" title="Скопировать прямую ссылку на вопрос 36" aria-label="Скопировать ссылку на вопрос 36"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>17 мая 2025 года 25-летний Гай Эдвард Барткус совершил суицидальный взрыв у клиники ЭКО в Палм-Спрингс. Следствие установило, что непосредственным толчком стал его личный суицидальный пакт после гибели подруги Софи Тинни, а сам он называл себя проморталистом и собрал в манифесте хаотичную смесь разнородных ссылок. Уже на следующий день, 18 мая 2025 года, Гэри выпустил заявление «RE The Bad IVF Thing», безоговорочно осудив теракт как безумие и вред делу.</p><p>Привязка к эфилизму Адама Лэнзы (трагедия в школе «Сэнди-Хук» 14 декабря 2012 года) — грубый хронологический и фактический подлог: сабреддит r/Efilism появился лишь в начале 2013 года, а сам Лэнза был ценностным нигилистом, который в своих записях прямо отвергал и высмеивал философию Гэри как «слишком морализаторскую».</p></div></article>
+<article class="qa-card" id="q-37" data-qnum="37"><div class="qa-head"><h3><span class="q-num">Вопрос 37.</span> Чем эфилизм отличается от движения ProExtinction (Extinctionism) и почему между ними возник конфликт?</h3><button type="button" class="copy-link-btn" data-anchor="#q-37" title="Скопировать прямую ссылку на вопрос 37" aria-label="Скопировать ссылку на вопрос 37"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Проект ProExtinction (proextinction.com) позиционирует себя как отдельное движение «экстинкционизма», дистанцируясь от антинатализма и делая ставку на уличный активизм и провокационную риторику «ускорения вымирания любой ценой».</p><p>Между Гэри (Inmendham), систематическим эфилизмом и лидерами ProExtinction произошёл жёсткий разрыв (включая дебаты декабря 2025 года): эфилизм критикует ProExtinction за доктринальную небрежность, отказ от опоры на аргументацию и сомнительные активистские стратегии, подставляющие всю философию под репутационные и правовые удары.</p></div></article></section><section id="sec-6" class="faq-section"><h2>Раздел 6. Детерминизм, свобода воли, моральный реализм и религия <span class="sec-range">Вопросы 38–45</span></h2><p class="sec-focus">Детерминизм, моральный реализм, рациональность в безличной Вселенной, ценность без наблюдателя («красивая гора»), религия, буддизм и про-экстинкционизм.</p><article class="qa-card" id="q-38" data-qnum="38"><div class="qa-head"><h3><span class="q-num">Вопрос 38.</span> Если в мире действует детерминизм и нет абсолютной свободы воли, какой смысл в этике и убеждении?</h3><button type="button" class="copy-link-btn" data-anchor="#q-38" title="Скопировать прямую ссылку на вопрос 38" aria-label="Скопировать ссылку на вопрос 38"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Детерминизм не равен фатализму (монография, гл. 13). Отсутствие мистической «свободы от причин» не означает, что наши мысли и решения ни на что не влияют — наоборот, именно идеи, факты и убедительные аргументы выступают реальными причинными факторами, перестраивающими работу человеческого мозга.</p><p>Гэри называет это «информированной волей»: отказ от метафизической вины и мести не отменяет прагматической оценки вреда, просвещения и разумного социального сдерживания.</p></div></article>
+<article class="qa-card" id="q-39" data-qnum="39"><div class="qa-head"><h3><span class="q-num">Вопрос 39.</span> Как эфилизм отвечает моральным нигилистам и на «гильотину Юма» (разрыв между сущим и должным)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-39" title="Скопировать прямую ссылку на вопрос 39" aria-label="Скопировать ссылку на вопрос 39"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Моральный нигилист утверждает: «Боль — это просто физический факт, из него не следует, что её не должно быть». Эфилизм отвечает через натуралистический моральный реализм (монография, гл. 21–23, 30; «Дебаты о моральном реализме» Гэри): субъективное переживание мучительной боли по самой своей внутренней природе обладает отрицательной валентностью — это не вкусовое предпочтение вроде «пиццы с ананасами», а объективное событие вреда.</p><p>В пустой Вселенной из камней нет проблем, но появление одного чувствующего существа онтологически создаёт измерение вреда. Рациональный агент, понимающий реальность чужой боли как равную собственной, получает прямое основание её не умножать.</p></div></article>
+<article class="qa-card" id="q-40" data-qnum="40"><div class="qa-head"><h3><span class="q-num">Вопрос 40.</span> Как вообще возможно считать что-либо рациональным в безличной физической Вселенной?</h3><button type="button" class="copy-link-btn" data-anchor="#q-40" title="Скопировать прямую ссылку на вопрос 40" aria-label="Скопировать ссылку на вопрос 40"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Точнее спросить: как рациональность возникает внутри безличного физического мира? Она возникает точно так же, как возникают сами биологические функции из неживых элементарных частиц — в результате усложнения материальных систем, формирования нейронных контуров обратной связи и появления способности моделировать причины, следствия и способы устранения ошибок.</p><p>Безличность Вселенной не отменяет объективности логических и причинно-следственных связей. Огонь обжигает, а предотвращение боли уменьшает реальное страдание независимо от того, существует ли во Вселенной какой-то «космический замысел».</p></div></article>
+<article class="qa-card" id="q-41" data-qnum="41"><div class="qa-head"><h3><span class="q-num">Вопрос 41.</span> Не возникает ли противоречия: при прекращении жизни исчезнет и сама рациональность?</h3><button type="button" class="copy-link-btn" data-anchor="#q-41" title="Скопировать прямую ссылку на вопрос 41" aria-label="Скопировать ссылку на вопрос 41"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Противоречия здесь нет. Рациональность имеет инструментальную ценность именно постольку, поскольку существуют проблемы, ошибки, уязвимость и страдания, требующие решения и предотвращения.</p><p>Если устранена сама область проблем и уязвимости, отсутствие инструмента их решения перестаёт быть каким-либо недостатком — подобно тому как полное исчезновение болезней делает ненужной медицину. Никто не считает, что нужно искусственно поддерживать эпидемии только ради сохранения профессии врача.</p></div></article>
+<article class="qa-card" id="q-42" data-qnum="42"><div class="qa-head"><h3><span class="q-num">Вопрос 42.</span> Неужели без чувствующих существ нет никакой ценности? А как же красивая гора на необитаемой планете?</h3><button type="button" class="copy-link-btn" data-anchor="#q-42" title="Скопировать прямую ссылку на вопрос 42" aria-label="Скопировать ссылку на вопрос 42"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Красота не является самостоятельным физическим свойством камня, подобным массе, плотности или температуре; она возникает как результат восприятия и эстетической оценки в сознании наблюдателя. На безжизненной планете существуют геологические структуры, но никто не испытывает ни восторга от их созерцания, ни утраты от их отсутствия.</p><p>Точно так же и сама Вселенная не «скучает» без зрителей. Приписывать пустой планете «трагедию невостребованной красоты» — это типичный антропоморфизм, перенос собственных психологических реакций на неживую материю.</p></div></article>
+<article class="qa-card" id="q-43" data-qnum="43"><div class="qa-head"><h3><span class="q-num">Вопрос 43.</span> Совместим ли эфилизм с религией или верой в Бога?</h3><button type="button" class="copy-link-btn" data-anchor="#q-43" title="Скопировать прямую ссылку на вопрос 43" aria-label="Скопировать ссылку на вопрос 43"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Исторически эфилизм опирается на научный натурализм и атеизм: эволюционная биология исчерпывающе объясняет происхождение боли и страдания без гипотезы «благого творца». Если допустить существование всемогущего Бога, чьи цели «неисповедимы», пронаталист всегда сможет укрыться за теодицеей («значит, страдания нужны для высшего блага»).</p><p>При этом в истории мысли существовали пессимистические религиозные течения (например, античный гностицизм), считавшие материальный мир ошибочным творением. Тем не менее для верующего в традиционные авраамические религии пронатализм сам по себе логически уязвим: рождение нового человека впервые подвергает его риску вечных мук.</p></div></article>
+<article class="qa-card" id="q-44" data-qnum="44"><div class="qa-head"><h3><span class="q-num">Вопрос 44.</span> Как эфилизм относится к буддизму, восточным учениям и классическому философскому пессимизму (Шопенгауэр, Хорстманн)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-44" title="Скопировать прямую ссылку на вопрос 44" aria-label="Скопировать ссылку на вопрос 44"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Эфилизм признаёт верным диагноз Первой благородной истины буддизма (жизнь неразрывно связана со страданием), но критикует классический буддизм за уход в индивидуальное «освобождение» при оставлении остальной биосферы в цикле страданий, а также за попытки объявить физическую боль «иллюзией».</p><p>С классическим немецким пессимизмом (Артур Шопенгауэр, Петер Вессель Цапффе, Ульрих Хорстманн с его «Чудовищем» 1983 года) эфилизм роднит трезвая оценка бытия, но разделяет отношение к действию: в полемике на r/Pessimism классические пессимисты упрекают эфилизм в «избыточном просветительском оптимизме», тогда как эфилизм критикует фатализм за капитуляцию перед предотвратимым вредом. От «антропофуги» Хорстманна эфилизм принципиально отличается сентиоцентризмом и полным отказом от апокалиптической эстетизации.</p></div></article>
+<article class="qa-card" id="q-45" data-qnum="45"><div class="qa-head"><h3><span class="q-num">Вопрос 45.</span> Чем традиционный этический эфилизм отличается от «кремниеводолинного про-экстинкционизма» (классификация Эмиля Торреса, 2025)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-45" title="Скопировать прямую ссылку на вопрос 45" aria-label="Скопировать ссылку на вопрос 45"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>В академической статье 2025 года в The Journal of Value Inquiry философ Эмиль П. Торрес разделил «традиционный» про-экстинкционизм (антинатализм, эфилизм — мотивированный состраданием и отказом от причинения вреда) и «кремниеводолинный» про-экстинкционизм (постгуманистов и техноутопистов, готовых пожертвовать биологическим человечеством ради создания «богоподобного» сверхинтеллекта и колонизации космоса).</p><p>Эфилизм является прямым антагонистом кремниеводолинного постгуманизма: вместо замены людей искусственными носителями новых, потенциально астрономических страданий (s-рисков) эфилизм требует не множить чувствующие системы вообще.</p></div></article></section><section id="sec-7" class="faq-section"><h2>Раздел 7. Общество, демография, ИИ и будущее <span class="sec-range">Вопросы 46–50</span></h2><p class="sec-focus">Последнее поколение, демографический переход, критика трансгуманизма, BAAN Метцингера, натуралистическая ошибка.</p><article class="qa-card" id="q-46" data-qnum="46"><div class="qa-head"><h3><span class="q-num">Вопрос 46.</span> Если люди перестанут рожать детей, разве последнее поколение не умрёт в хаосе и беспомощности?</h3><button type="button" class="copy-link-btn" data-anchor="#q-46" title="Скопировать прямую ссылку на вопрос 46" aria-label="Скопировать ссылку на вопрос 46"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Это одно из самых частых опасений, но оно основано на нереалистичном допущении мгновенного обрушения рождаемости до нуля «завтра утром». В действительности демографическое сокращение происходит плавно на протяжении многих поколений (монография, гл. 44).</p><p>По мере снижения численности общества автоматизация, робототехника, медицина и перераспределение ресурсов (высвобождающихся от содержания растущей демографической пирамиды) позволяют обеспечить достойный уход пожилым людям. Кроме того, даже гипотетические трудности финального поколения несопоставимо меньше суммы страданий, которые неизбежно выпадут на долю десятков и сотен будущих поколений при бесконечном продолжении рода.</p></div></article>
+<article class="qa-card" id="q-47" data-qnum="47"><div class="qa-head"><h3><span class="q-num">Вопрос 47.</span> Какова реалистичная стратегия эфилизма в отношении человечества («пряник, а не кнут» и демографический переход)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-47" title="Скопировать прямую ссылку на вопрос 47" aria-label="Скопировать ссылку на вопрос 47"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Статистика по всему миру (от Европы и Восточной Азии до Ирана и Латинской Америки) показывает, что главным драйвером снижения рождаемости является не принуждение, а образование (особенно женщин), урбанизация, доступная контрацепция и рост личной автономии. Как только у людей появляется знание и свобода выбора, рождаемость устойчиво падает ниже уровня воспроизводства.</p><p>Поэтому реалистичная стратегия эфилизма строится по принципу «пряника, а не кнута»: просвещение, свободный доступ к контрацепции и медицинской автономии, отмена агрессивной пронаталистической пропаганды и пересмотр экономических стимулов, подталкивающих людей к неосознанному деторождению.</p></div></article>
+<article class="qa-card" id="q-48" data-qnum="48"><div class="qa-head"><h3><span class="q-num">Вопрос 48.</span> Не спасёт ли нас прогресс, генетика, трансгуманизм или искусственный интеллект (создание «рая на Земле»)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-48" title="Скопировать прямую ссылку на вопрос 48" aria-label="Скопировать ссылку на вопрос 48"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Наука и медицина действительно способны существенно снизить повседневную боль уже живущих людей — и эфилизм приветствует паллиативную помощь и прогресс медицины. Однако идея «гарантированного технологического рая» (гедонистического императива или цифрового бессмертия) сталкивается с тремя неустранимыми барьерами (монография, гл. 45–46):</p><p>(1) риск катастрофических ошибок и появления новых, ещё более тяжёлых форм страдания (s-рисков); (2) невозможность компенсировать уже совершённые и текущие страдания миллиардов живых существ будущей утопией; (3) отсутствие какой-либо предсуществующей нужды в самом существовании «счастливых постлюдей».</p></div></article>
+<article class="qa-card" id="q-49" data-qnum="49"><div class="qa-head"><h3><span class="q-num">Вопрос 49.</span> Что такое BAAN Томаса Метцингера, s-риски и почему эфилизм против колонизации космоса и создания искусственной сентиентности?</h3><button type="button" class="copy-link-btn" data-anchor="#q-49" title="Скопировать прямую ссылку на вопрос 49" aria-label="Скопировать ссылку на вопрос 49"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Немецкий философ сознания Томас Метцингер предложил принцип BAAN (Benevolent Artificial Anti-Natalism — «благожелательный искусственный антинатализм»): строгий мораторий на создание искусственных систем, способных испытывать субъективные страдания, поскольку неконтролируемое тиражирование цифрового сознания способно породить астрономические объёмы боли (s-риски — риски страданий колоссального масштаба).</p><p>По той же причине эфилизм выступает против панспермии и заселения других планет земной жизнью: экспорт ДНК в космос означает многократное тиражирование эволюционной бойни на миллиарды лет за пределами Земли.</p></div></article>
+<article class="qa-card" id="q-50" data-qnum="50"><div class="qa-head"><h3><span class="q-num">Вопрос 50.</span> Не противоречит ли отказ от размножения «законам природы» и эволюционной программе?</h3><button type="button" class="copy-link-btn" data-anchor="#q-50" title="Скопировать прямую ссылку на вопрос 50" aria-label="Скопировать ссылку на вопрос 50"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Нет никакого «закона природы», обязывающего разумное существо размножаться. Эволюция — это слепой статистический процесс, а не законодатель и не моральный авторитет. Человеческая цивилизация на каждом шагу идёт против эволюционной программы: мы носим очки, лечим инфекции антибиотиками, пользуемся контрацепцией, запрещаем право сильного и защищаем слабых.</p><p>Утверждать, что деторождение «правильно, потому что естественно», — значит совершать натуралистическую ошибку. Наличие разума именно тем и ценно, что позволяет критически оценивать биологические импульсы, а не подчиняться им вслепую.</p></div></article></section><section id="sec-8" class="faq-section"><h2>Раздел 8. Психология, стереотипы и ответы на популярную критику <span class="sec-range">Вопросы 51–55</span></h2><p class="sec-focus">Миф о «Тёмной тетраде» (Питерсон/Маск), депрессия, отношение к уже рождённым детям, личный вклад и «премия Эмми», маршрут изучения эфилизма.</p><article class="qa-card" id="q-51" data-qnum="51"><div class="qa-head"><h3><span class="q-num">Вопрос 51.</span> Правда ли, что антинаталисты и эфилисты — это люди с чертами «Тёмной тетрады» (миф из интервью Джордана Питерсона и Илона Маска)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-51" title="Скопировать прямую ссылку на вопрос 51" aria-label="Скопировать ссылку на вопрос 51"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Нет, это грубое искажение данных. В интервью 2024 года Джордан Питерсон сослался на исследования Фила Шёнеггера (2021/2022) и заявил, будто антинатализм связан с «Тёмной тетрадой» (макиавеллизмом, психопатией, нарциссизмом и садизмом).</p><p>Проверка первоисточников (Шёнеггер, 2021/2022; Михан, Зиглер-Хилл и Шэкелфорд, 2024) выявляет три факта, о которых Питерсон умолчал: (1) корреляции были слабыми и касались преимущественно депрессивности и мрачного взгляда на мир, а вовсе не «садизма» или желания причинять зло; (2) сам Шёнеггер прямо предостерёг от использования его статьи как аргумента ad hominem против философии антинатализма; (3) в исследовании 2024 года связь полностью опосредовалась реалистично-мрачным восприятием мира («первичными убеждениями о мире»), а не отсутствием эмпатии.</p></div></article>
+<article class="qa-card" id="q-52" data-qnum="52"><div class="qa-head"><h3><span class="q-num">Вопрос 52.</span> Правда ли, что эфилизм — это просто депрессия или личная обида на жизнь?</h3><button type="button" class="copy-link-btn" data-anchor="#q-52" title="Скопировать прямую ссылку на вопрос 52" aria-label="Скопировать ссылку на вопрос 52"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Сводить философскую аргументацию к психологическому состоянию её носителей — логическая ошибка перехода на личности (генетическая ошибка / ad hominem). Истинность утверждений о смертности, болезнях, r-отборе и конститутивном риске не зависит от того, в каком настроении находится говорящий.</p><p>Более того, психологический феномен «депрессивного реализма» и естественное сострадательное огорчение при столкновении с масштабами боли в мире не делают оценку реальности ложной. Среди сторонников антинатализма и эфилизма немало вполне благополучных, социально адаптированных людей, пришедших к этим выводам из эмпатии и логики.</p></div></article>
+<article class="qa-card" id="q-53" data-qnum="53"><div class="qa-head"><h3><span class="q-num">Вопрос 53.</span> Как эфилизм относится к уже рождённым детям, родителям, близости и человеческому теплу?</h3><button type="button" class="copy-link-btn" data-anchor="#q-53" title="Скопировать прямую ссылку на вопрос 53" aria-label="Скопировать ссылку на вопрос 53"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>С глубоким сочувствием и уважением к их благополучию (монография, гл. 37 и 41). Критика прокреации направлена против самого акта создания нового риска, а не против уже живущих людей и не против любви к детям. Если ребёнок уже родился, высший долг взрослых — окружить его заботой, безопасностью и теплом.</p><p>Равным образом систематический эфилизм выступает против травли родителей: большинство людей заводит детей под давлением культуры, биологических импульсов и недостатка информации. Эффективный диалог строится на уважении, ясности и сострадании, а не на агрессии.</p></div></article>
+<article class="qa-card" id="q-54" data-qnum="54"><div class="qa-head"><h3><span class="q-num">Вопрос 54.</span> Эта философия кажется слишком мрачной: что может сделать один человек и придётся ли жертвовать личными мечтами (например, условной «премией Эмми»)?</h3><button type="button" class="copy-link-btn" data-anchor="#q-54" title="Скопировать прямую ссылку на вопрос 54" aria-label="Скопировать ссылку на вопрос 54"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Трезвый взгляд на устройство биосферы не означает бессилия или отказа от осмысленной, деятельной жизни. Каждый человек может внести реальный вклад в уменьшение страданий: через личный репродуктивный выбор, этичное потребление, просвещение о проблеме страданий диких животных и видовой дискриминации, поддержку благотворительных, научных и правозащитных инициатив.</p><p>Что касается личных амбиций, честный взгляд в перспективу столетия быстро показывает, сколь эфемерны статусные награды вроде условной «премии Эмми». Отказ от действий, причиняющих вред, и постепенное смещение фокуса к альтруизму могут потребовать внутренней перестройки, однако исследования в области психологии подтверждают, что осмысленное сострадание и помощь другим нередко приносят человеку более глубокое внутреннее равновесие и чувство солидарности с окружающим миром.</p></div></article>
+<article class="qa-card" id="q-55" data-qnum="55"><div class="qa-head"><h3><span class="q-num">Вопрос 55.</span> С чего начать глубокое изучение эфилизма и какие материалы стоит прочитать в первую очередь?</h3><button type="button" class="copy-link-btn" data-anchor="#q-55" title="Скопировать прямую ссылку на вопрос 55" aria-label="Скопировать ссылку на вопрос 55"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="btn-label">Ссылка</span></button></div><div class="qa-body"><p>Для системного знакомства оптимально двигаться по трём ступеням:</p><p>1) Базовое введение: настоящий ЧаВО и «Философская система Гэри: нейтральный аналитический очерк» (сводный обзор более 90 материалов архива Efilism RUS). 2) Фундаментальная база: монография «Эфилизм: Философия абсолютного антинатализма» (2-е изд., 2026) — особенно «Доказательная карта книги», главы 31–33 (Минимальное этическое ядро и защитный порог) и Приложение B (44 типовых возражения). 3) Первоисточники и полемика: ключевые переводы Гэри (Inmendham) из каталога Efilism RUS (WTF #980, WTF #959, «Эфилизм DoNotGo.com», дебаты с Магнусом Виндингом и разборы Дэвида Бенатара), а также академические работы Дэвида Бенатара, Магнуса Виндинга, Оскара Орты, Томаса Метцингера и Эмиля Торреса.</p></div></article></section>
+  </main>
+
+  <footer>Efilism RUS · Большой ЧаВО по эфилизму (55 вопросов) · Ноябрь 2026</footer>
+</div>
+
+<button type="button" id="backToTop" class="back-to-top" aria-label="Вернуться наверх">↑ Наверх</button>
+
+<script>
+(function() {
+  const searchInput = document.getElementById('faqSearch');
+  const clearBtn = document.getElementById('clearSearch');
+  const countEl = document.getElementById('searchCount');
+  const emptyState = document.getElementById('emptyState');
+  const tocBlock = document.getElementById('tocBlock');
+  const sections = Array.from(document.querySelectorAll('.faq-section'));
+  const cards = Array.from(document.querySelectorAll('.qa-card'));
+  const totalCount = cards.length;
+
+  function applyFilter() {
+    const q = searchInput.value.trim().toLowerCase();
+    clearBtn.classList.toggle('visible', q.length > 0);
+    let shown = 0;
+
+    sections.forEach(sec => {
+      let secVisible = 0;
+      const secCards = sec.querySelectorAll('.qa-card');
+      secCards.forEach(card => {
+        const num = card.getAttribute('data-qnum') || '';
+        const text = card.textContent.toLowerCase();
+        const match = !q || text.includes(q) || num === q;
+        card.classList.toggle('hidden', !match);
+        if (match) {
+          secVisible++;
+          shown++;
+        }
+      });
+      sec.classList.toggle('hidden', secVisible === 0);
+    });
+
+    tocBlock.classList.toggle('hidden', q.length > 0);
+    emptyState.classList.toggle('visible', shown === 0);
+    countEl.textContent = q
+      ? 'Найдено: ' + shown + ' из ' + totalCount + ' вопросов'
+      : 'Показано: ' + totalCount + ' из ' + totalCount + ' вопросов';
+  }
+
+  searchInput.addEventListener('input', applyFilter);
+  clearBtn.addEventListener('click', function() {
+    searchInput.value = '';
+    applyFilter();
+    searchInput.focus();
+  });
+
+  // Копирование прямой ссылки на вопрос
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise((resolve, reject) => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        resolve();
+      } catch (err) {
+        reject(err);
+      } finally {
+        document.body.removeChild(ta);
+      }
+    });
+  }
+
+  document.querySelectorAll('.copy-link-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const anchor = btn.getAttribute('data-anchor');
+      const baseUrl = window.location.href.split('#')[0];
+      const fullUrl = baseUrl + anchor;
+      if (history.replaceState) {
+        history.replaceState(null, '', anchor);
+      }
+      copyText(fullUrl).then(() => {
+        const label = btn.querySelector('.btn-label');
+        const oldText = label.textContent;
+        btn.classList.add('copied');
+        label.textContent = 'Скопировано ✓';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          label.textContent = oldText;
+        }, 1800);
+      }).catch(() => {
+        window.prompt('Скопируйте ссылку на вопрос:', fullUrl);
+      });
+    });
+  });
+
+  // Кнопка "Наверх"
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    backBtn.classList.toggle('visible', window.scrollY > 450);
+  }, { passive: true });
+  backBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
