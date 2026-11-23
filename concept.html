@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Концепт эфилизма за 5 минут — Efilism RUS (ред. 2026)">
+<meta property="og:description" content="Краткая карта философии абсолютного сентиоцентрического антинатализма: 3 базовых принципа, 5 шагов доказательной лестницы и чёткое разграничение с мифами.">
+<meta name="description" content="Концепт эфилизма за 5 минут: базовое введение в систему проекта Efilism RUS (редакция 2026).">
+<title>Концепт эфилизма за 5 минут — Efilism RUS</title>
+<style>
+  :root {
+    --primary: #1B365D;
+    --accent: #2B5B84;
+    --accent-soft: #EBF2F8;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+    --text: #1E293B;
+    --muted: #64748B;
+    --warn-bg: #FEF2F2;
+    --warn-border: #FECACA;
+    --warn-text: #991B1B;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.68;
+  }
+  
+  .site-nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-nav-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .site-brand {
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.98rem;
+    letter-spacing: 0.02em;
+  }
+  .site-tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .site-tab {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 7px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .site-tab:hover {
+    background: var(--accent-soft);
+    color: var(--primary);
+  }
+  .site-tab.active {
+    background: var(--primary);
+    color: #FFFFFF;
+  }
+  @media (max-width: 640px) {
+    .site-nav-inner { padding: 10px 14px; }
+    .site-tab { padding: 5px 10px; font-size: 0.85rem; }
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+  header {
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  h1 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-size: 1.06rem;
+    margin: 0;
+  }
+  h2 {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin: 34px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .pillar-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--primary);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .pillar-card h3 {
+    margin: 0 0 6px;
+    font-size: 1.02rem;
+    color: var(--primary);
+  }
+  .pillar-card p {
+    margin: 0;
+    font-size: 0.94rem;
+    color: var(--text);
+  }
+  .step-card {
+    display: flex;
+    gap: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .step-num {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #FFFFFF;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-body h3 {
+    margin: 0 0 6px;
+    font-size: 1.08rem;
+    color: var(--accent);
+  }
+  .step-body p {
+    margin: 0;
+    font-size: 0.98rem;
+  }
+  .demarc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .demarc-card {
+    background: var(--card);
+    border: 1px solid var(--warn-border);
+    border-left: 4px solid var(--warn-text);
+    border-radius: 8px;
+    padding: 15px 18px;
+  }
+  .demarc-card h3 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    color: var(--warn-text);
+  }
+  .demarc-card p {
+    margin: 0;
+    font-size: 0.94rem;
+  }
+  .cta-box {
+    background: var(--accent-soft);
+    border: 1px solid #CBDCEB;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cta-box h3 {
+    margin: 0 0 4px;
+    color: var(--primary);
+    font-size: 1.12rem;
+  }
+  .cta-box p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: opacity 0.15s ease;
+  }
+  .cta-btn.primary {
+    background: var(--primary);
+    color: #FFFFFF;
+  }
+  .cta-btn.secondary {
+    background: var(--card);
+    color: var(--primary);
+    border: 1px solid var(--border);
+  }
+  .cta-btn:hover { opacity: 0.9; }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 44px;
+  }
+  @media (max-width: 720px) {
+    .pillars { grid-template-columns: 1fr; }
+    .demarc-grid { grid-template-columns: 1fr; }
+    .container { padding: 22px 14px 72px; }
+    h1 { font-size: 1.55rem; }
+    .step-card { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="site-nav"><div class="site-nav-inner"><a href="concept.html" class="site-brand">Efilism RUS · 2026</a><div class="site-tabs"><a href="concept.html" class="site-tab active">Концепт (5 мин)</a><a href="index.html" class="site-tab">Большой ЧаВО (55)</a><a href="glossary.html" class="site-tab">Глоссарий (45)</a></div></div></div>
+<div class="container">
+  <header>
+    <h1>Концепт эфилизма за 5 минут</h1>
+    <p class="subtitle">Краткая карта системы (редакция 2026) · Проект Efilism RUS · Ноябрь 2026</p>
+    <p class="lead"><strong>Эфилизм</strong> (от англ. <em>Efilism</em> — слово <em>LIFE</em> наоборот, термин введён Гэри / Inmendham) — это философия абсолютного сентиоцентрического антинатализма. Она утверждает, что чувствующая жизнь по самому своему устройству порождает некомпенсируемые страдания, поэтому этически верно не запускать новые циклы уязвимости, при безусловном соблюдении принципа ненасилия к уже живущим.</p>
+  </header>
+
+  <h2>Три базовых принципа современной системы</h2>
+  <div class="pillars">
+    <div class="pillar-card">
+      <h3>1. Научный фаллибилистский реализм</h3>
+      <p>Опора на биологию, нейронауку и логику риска без религиозных догм и мистики, с готовностью уточнять выводы по мере появления новых научных данных.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>2. Безусловный приоритет ненасилия</h3>
+      <p>Категорический отказ от принуждения, насилия, террора и промортализма. Критика направлена против создания нового риска, а не против уже живущих существ.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>3. Последовательный сентиоцентризм</h3>
+      <p>Моральную значимость имеет каждое чувствующее существо, способное переживать боль и дистресс — независимо от биологического вида или уровня интеллекта.</p>
+    </div>
+  </div>
+
+  <h2>Пять шагов доказательной логики</h2>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>Безличная физика и «иллюзия самоцельности ДНК»</h3>
+      <p>Эволюция не является разумным проектом, нацеленным на благополучие. Молекула ДНК воспроизводит саму себя механически, а нервная система и боль возникли лишь как инструменты выживания носителей кода, а не ради их счастья.</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>Архитектура нужды и реальность вреда</h3>
+      <p>Любой живой организм — это дефицитарная система, постоянно борющаяся с энтропией, голодом, болезнями и страхом. Боль и отрицательная валентность переживания (подкреплённые феноменальной прозрачностью нервной системы) обладают объективной реальностью, тогда как удовольствия в значительной мере лишь временно снимают предварительно созданный дефицит.</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>Конститутивный риск и защитный порог</h3>
+      <p>Невозможно получить согласие нерождённого на участие в причинной лотерее жизни. Принцип антижертвенного защитного порога утверждает: нельзя односторонне подвергать нового субъекта неустранимому риску тяжёлых страданий ради чужих желаний или шанса на благополучный исход, тем более что нерождённый не испытывает никакого лишения.</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h3>От человека — ко всей чувствующей биосфере</h3>
+      <p>Подавляющее большинство чувствующих существ живёт не в человеческих городах, а в дикой природе, где господствуют хищничество, паразитизм, голод и массовая гибель потомства. Поэтому эфилизм расширяет антинатализм за пределы человеческого вида и выступает против создания искусственной сентиентности и переноса биосферы в космос.</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <h3>Эмпатия к живущим и реалистичная практика</h3>
+      <p>На практике эфилизм сводится к личному репродуктивному выбору, этичному потреблению (веганству), поддержке образования и добровольного демографического перехода («пряник, а не кнут»), защите права на достойный медицинский уход и заботе об уже рождённых людях и животных.</p>
+    </div>
+  </div>
+
+  <h2>Чем эфилизм НЕ является</h2>
+  <div class="demarc-grid">
+    <div class="demarc-card">
+      <h3>Не мизантропия и не ненависть к жизни</h3>
+      <p>В основе позиции лежит не враждебность к людям, а сострадание и нежелание умножать уязвимость. К уже рождённым детям и родителям эфилизм относится с уважением и эмпатией.</p>
+    </div>
+    <div class="demarc-card">
+      <h3>Не промортализм и не «культ смерти»</h3>
+      <p>Эфилизм не призывает живущих к самоубийству и не обесценивает жизнь тех, кто уже существует и хочет жить. Он различает «жизнь, которую не стоит начинать» и «жизнь, которую стоит бережно продолжать».</p>
+    </div>
+    <div class="demarc-card">
+      <h3>Не оправдание насилия</h3>
+      <p>Любое принуждение, террор или покушение на других людей прямо противоречат этическому ядру системы и категорически осуждаются проектом Efilism RUS.</p>
+    </div>
+    <div class="demarc-card">
+      <h3>Не депрессия и не слепая догма</h3>
+      <p>Философский вывод опирается на проверяемые биологические и этические аргументы, а не на личное настроение. Система открыта для критического диалога и научной верификации.</p>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <div>
+      <h3>Куда двигаться дальше?</h3>
+      <p>Изучите 55 развёрнутых ответов на частые вопросы или загляните в словарь из 45 понятий.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="index.html" class="cta-btn primary">Открыть Большой ЧаВО (55)</a>
+      <a href="glossary.html" class="cta-btn secondary">Открыть Глоссарий (45)</a>
+    </div>
+  </div>
+
+  <footer>Efilism RUS · Концепт эфилизма за 5 минут (ред. 2026) · Ноябрь 2026</footer>
+</div>
+</body>
+</html>

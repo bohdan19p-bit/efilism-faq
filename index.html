@@ -59,7 +59,7 @@
   /* Панель живого поиска */
   .search-bar-wrap {
     position: sticky;
-    top: 12px;
+    top: 52px;
     z-index: 30;
     background: rgba(248, 250, 252, 0.94);
     backdrop-filter: blur(8px);
@@ -160,7 +160,7 @@
 
   .faq-section {
     margin-bottom: 40px;
-    scroll-margin-top: 96px;
+    scroll-margin-top: 144px;
   }
   .faq-section h2 {
     color: var(--primary);
@@ -186,7 +186,7 @@
     border-radius: 8px;
     padding: 18px 22px;
     margin-bottom: 14px;
-    scroll-margin-top: 100px;
+    scroll-margin-top: 148px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .qa-card:target {
@@ -298,9 +298,62 @@
     .qa-head { flex-direction: column; gap: 8px; }
     .copy-link-btn { align-self: flex-start; }
   }
+
+  .site-nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-nav-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .site-brand {
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.98rem;
+    letter-spacing: 0.02em;
+  }
+  .site-tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .site-tab {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 7px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .site-tab:hover {
+    background: var(--accent-soft);
+    color: var(--primary);
+  }
+  .site-tab.active {
+    background: var(--primary);
+    color: #FFFFFF;
+  }
+  @media (max-width: 640px) {
+    .site-nav-inner { padding: 10px 14px; }
+    .site-tab { padding: 5px 10px; font-size: 0.85rem; }
+  }
 </style>
 </head>
 <body>
+<div class="site-nav"><div class="site-nav-inner"><a href="concept.html" class="site-brand">Efilism RUS · 2026</a><div class="site-tabs"><a href="concept.html" class="site-tab">Концепт (5 мин)</a><a href="index.html" class="site-tab active">Большой ЧаВО (55)</a><a href="glossary.html" class="site-tab">Глоссарий (45)</a></div></div></div>
 <div class="container" id="top">
   <header>
     <h1>Большой ЧаВО по эфилизму: 55 главных вопросов и ответов</h1>
