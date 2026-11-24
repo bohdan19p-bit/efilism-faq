@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Efilism RUS — Навигация и все ключевые ссылки">
+<meta property="og:description" content="Единая точка входа в проект Efilism RUS: концепт за 5 минут, Большой ЧаВО (55 вопросов), глоссарий (45 понятий), книга, архивы переводов и сообщество.">
+<meta name="description" content="Единая мобильная визитка-хаб проекта Efilism RUS (редакция 2026): с чего начать, библиотека, переводы, Telegram и официальный сайт.">
+<title>Efilism RUS — Старт и навигация</title>
+<style>
+  :root {
+    --primary: #1B365D;
+    --primary-hover: #132847;
+    --accent: #2B5B84;
+    --accent-soft: #EBF2F8;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --card-hover: #F1F6FB;
+    --border: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --text: #1E293B;
+    --muted: #64748B;
+    --badge-bg: #EBF2F8;
+    --badge-text: #1B365D;
+    --shadow: 0 2px 10px rgba(27, 54, 93, 0.06);
+    --shadow-hover: 0 6px 18px rgba(27, 54, 93, 0.12);
+    --featured-bg: linear-gradient(135deg, #1B365D 0%, #2B5B84 100%);
+    --featured-text: #FFFFFF;
+    --featured-muted: rgba(255, 255, 255, 0.84);
+  }
+
+  [data-theme="dark"] {
+    --primary: #93C5FD;
+    --primary-hover: #BFDBFE;
+    --accent: #60A5FA;
+    --accent-soft: rgba(96, 165, 250, 0.14);
+    --bg: #0F172A;
+    --card: #1E293B;
+    --card-hover: #263449;
+    --border: #334155;
+    --border-strong: #475569;
+    --text: #F1F5F9;
+    --muted: #94A3B8;
+    --badge-bg: rgba(96, 165, 250, 0.16);
+    --badge-text: #BFDBFE;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+    --shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.42);
+    --featured-bg: linear-gradient(135deg, #1E3A5F 0%, #2B5B84 100%);
+    --featured-text: #F8FAFC;
+    --featured-muted: rgba(241, 245, 249, 0.84);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  /* Sticky Top Nav — matches concept.html, index.html, glossary.html */
+  .site-nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-nav-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .site-brand {
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.96rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .site-tabs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .site-tab {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 6px 11px;
+    border-radius: 7px;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+  .site-tab:hover {
+    background: var(--accent-soft);
+    color: var(--primary);
+  }
+  .site-tab.active {
+    background: #1B365D;
+    color: #FFFFFF;
+  }
+  [data-theme="dark"] .site-tab.active {
+    background: #2B5B84;
+    color: #FFFFFF;
+  }
+
+  /* Mobile-first Hub Container */
+  .hub-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 28px 18px 64px;
+  }
+
+  /* Hero Card */
+  .hero {
+    text-align: center;
+    padding: 24px 20px 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 18px;
+  }
+  .avatar-badge {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 14px;
+    border-radius: 18px;
+    background: var(--featured-bg);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 6px 16px rgba(27, 54, 93, 0.22);
+  }
+  .hero h1 {
+    margin: 0 0 6px;
+    font-size: 1.55rem;
+    color: var(--primary);
+    line-height: 1.2;
+  }
+  .hero-desc {
+    margin: 0 auto 16px;
+    max-width: 460px;
+    font-size: 0.94rem;
+    color: var(--muted);
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.84rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+    font-family: inherit;
+  }
+  .action-btn:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--primary);
+  }
+  .action-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Filter Pills */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 4px 2px 14px;
+    margin-bottom: 6px;
+    scrollbar-width: none;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-pill {
+    flex: 0 0 auto;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: inherit;
+  }
+  .filter-pill:hover {
+    border-color: var(--accent);
+    color: var(--primary);
+  }
+  .filter-pill.active {
+    background: #1B365D;
+    border-color: #1B365D;
+    color: #FFFFFF;
+  }
+  [data-theme="dark"] .filter-pill.active {
+    background: #2B5B84;
+    border-color: #2B5B84;
+    color: #FFFFFF;
+  }
+
+  /* Sections */
+  .hub-section {
+    margin-bottom: 24px;
+  }
+  .hub-section.hidden {
+    display: none;
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 4px 10px;
+  }
+  .section-title {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .section-count {
+    font-size: 0.76rem;
+    color: var(--muted);
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  /* Link Cards */
+  .link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+    background: var(--card-hover);
+  }
+  .link-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Featured First Card */
+  .link-card.featured {
+    background: var(--featured-bg);
+    border-color: transparent;
+    color: var(--featured-text);
+    padding: 17px 18px;
+  }
+  .link-card.featured:hover {
+    background: var(--featured-bg);
+    filter: brightness(1.06);
+    border-color: transparent;
+  }
+  .link-card.featured .card-icon {
+    background: rgba(255, 255, 255, 0.16);
+    color: #FFFFFF;
+  }
+  .link-card.featured .card-title {
+    color: #FFFFFF;
+  }
+  .link-card.featured .card-sub {
+    color: var(--featured-muted);
+  }
+  .link-card.featured .card-arrow {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .card-icon {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: var(--accent-soft);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-body {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .card-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.3;
+  }
+  .pill-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+  }
+  .pill-tag.soft {
+    background: var(--badge-bg);
+    color: var(--badge-text);
+  }
+  .card-sub {
+    margin-top: 3px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .card-arrow {
+    flex: 0 0 auto;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    transition: transform 0.15s ease, color 0.15s ease;
+  }
+  .link-card:hover .card-arrow {
+    transform: translateX(3px);
+    color: var(--primary);
+  }
+  .link-card.featured:hover .card-arrow {
+    color: #FFFFFF;
+  }
+
+  /* Footer */
+  .hub-footer {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .hub-footer p {
+    margin: 0 0 6px;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #1B365D;
+    color: #FFFFFF;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 100;
+    white-space: nowrap;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  @media (max-width: 600px) {
+    .site-nav-inner { padding: 9px 12px; }
+    .site-tab { padding: 5px 9px; font-size: 0.82rem; }
+    .hub-wrap { padding: 18px 14px 52px; }
+    .hero { padding: 20px 16px 18px; }
+    .hero h1 { font-size: 1.38rem; }
+    .link-card { padding: 13px 14px; gap: 12px; }
+    .card-icon { flex: 0 0 38px; width: 38px; height: 38px; }
+  }
+</style>
+</head>
+<body id="top">
+
+<nav class="site-nav" aria-label="Основная навигация">
+  <div class="site-nav-inner">
+    <a href="#top" class="site-brand">Efilism RUS · 2026</a>
+    <div class="site-tabs">
+      <a href="#top" class="site-tab active">Старт</a>
+      <a href="https://bohdan19p-bit.github.io/efilism-faq/concept.html" class="site-tab">Концепт (5 мин)</a>
+      <a href="https://bohdan19p-bit.github.io/efilism-faq/" class="site-tab">ЧаВО (55)</a>
+      <a href="https://bohdan19p-bit.github.io/efilism-faq/glossary.html" class="site-tab">Глоссарий (45)</a>
+    </div>
+  </div>
+</nav>
+
+<main class="hub-wrap">
+  <header class="hero">
+    <div class="avatar-badge" aria-hidden="true">ER</div>
+    <h1>Efilism RUS</h1>
+    <p class="hero-desc">Философия абсолютного сентиоцентрического антинатализма. Все главные материалы, справочники, переводы и площадки проекта — в одном месте.</p>
+    <div class="hero-actions">
+      <button type="button" id="copyHubLink" class="action-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Скопировать ссылку
+      </button>
+      <button type="button" id="themeToggle" class="action-btn" aria-label="Переключить тему оформления">
+        <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeLabel">Тёмная тема</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="filter-bar" role="tablist" aria-label="Фильтр разделов">
+    <button type="button" class="filter-pill active" data-filter="all" role="tab" aria-selected="true">Всё (15)</button>
+    <button type="button" class="filter-pill" data-filter="start" role="tab" aria-selected="false">С чего начать</button>
+    <button type="button" class="filter-pill" data-filter="library" role="tab" aria-selected="false">Книга и архивы</button>
+    <button type="button" class="filter-pill" data-filter="telegram" role="tab" aria-selected="false">Telegram</button>
+    <button type="button" class="filter-pill" data-filter="web" role="tab" aria-selected="false">Сайт и соцсети</button>
+  </div>
+
+  <!-- Section 1: Start -->
+  <section class="hub-section" data-section="start">
+    <div class="section-head">
+      <h2 class="section-title">1. С чего начать (база)</h2>
+      <span class="section-count">4 материала</span>
+    </div>
+    <div class="link-list">
+      <a class="link-card featured" href="https://bohdan19p-bit.github.io/efilism-faq/concept.html">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <span class="card-title">Концепт эфилизма за 5 минут</span>
+            <span class="pill-tag">Рекомендуем первым</span>
+          </div>
+          <div class="card-sub">3 базовых принципа, 5 шагов доказательной лестницы и разграничение с мифами</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://bohdan19p-bit.github.io/efilism-faq/">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <span class="card-title">Большой ЧаВО по эфилизму</span>
+            <span class="pill-tag soft">55 вопросов</span>
+          </div>
+          <div class="card-sub">Интерактивный справочник с поиском по всем темам и частым возражениям</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://bohdan19p-bit.github.io/efilism-faq/glossary.html">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <span class="card-title">Глоссарий терминологии</span>
+            <span class="pill-tag soft">45 понятий</span>
+          </div>
+          <div class="card-sub">Точный понятийный аппарат монографии (редакция 2026) с быстрым поиском</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://telegra.ph/EFILismVSTheWorld-RigorousArguments-08-05" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Навигация по аргументам (ред. 2026)</div>
+          <div class="card-sub">Полная учебная структура доводов, «Философская арена» и базовые тексты в Telegraph</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 2: Book, Library & Archives -->
+  <section class="hub-section" data-section="library">
+    <div class="section-head">
+      <h2 class="section-title">2. Книга, архивы и переводы</h2>
+      <span class="section-count">5 ресурсов</span>
+    </div>
+    <div class="link-list">
+      <a class="link-card" href="https://telegra.ph/Guide-to-Resources-09-11" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Путеводитель по материалам и книге</div>
+          <div class="card-sub">Монография «Эфилизм. Философия абсолютного антинатализма», подборки и архивы</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://docs.google.com/spreadsheets/d/1raXRmqOLlOkdTGstwmGy0mbIcCds5Po_ozgGMI0qvhw/edit" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Каталог переводов (Google Таблица)</div>
+          <div class="card-sub">Открытая база переводов выступлений и дебатов Гэри (Inmendham) с удобным поиском</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://drive.google.com/drive/folders/1zF_32i2bM0SbiRTanCwPLI53-Cm-lbb1" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Архив документов (Google Диск)</div>
+          <div class="card-sub">Текстовые переводы, статьи и справочные файлы проекта в открытом доступе</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://mega.nz/folder/d9RVhC7J#DMnlHpVtQ4Eb8sbS0EPr_Q" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Видеоархив переводов (Mega)</div>
+          <div class="card-sub">Полная коллекция озвученных и переведённых видео, интервью и дебатов</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://telegra.ph/Razbor-kritiki-07-22" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Разбор критики эфилизма</div>
+          <div class="card-sub">Системные ответы на главные возражения, мифы и искажения позиции</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 3: Telegram Ecosystem -->
+  <section class="hub-section" data-section="telegram">
+    <div class="section-head">
+      <h2 class="section-title">3. Сообщество в Telegram</h2>
+      <span class="section-count">4 ссылки</span>
+    </div>
+    <div class="link-list">
+      <a class="link-card" href="https://t.me/efilism_RUS" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Главный канал Efilism RUS</div>
+          <div class="card-sub">Свежие публикации, аналитика, новости мира и переводы в Telegram</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://t.me/EfilismRUS" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Сообщество единомышленников</div>
+          <div class="card-sub">Открытый чат с тематическими ветками для участников проекта</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://t.me/efilismrusdiscussion" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Обсуждение канала</div>
+          <div class="card-sub">Комментарии к публикациям и дискуссии с читателями</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://t.me/boost/efilism_RUS" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Забустить канал в Telegram</div>
+          <div class="card-sub">Поддержать канал голосом Premium для публикации Историй и оформления</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 4: Website & Socials -->
+  <section class="hub-section" data-section="web">
+    <div class="section-head">
+      <h2 class="section-title">4. Сайт и остальные площадки</h2>
+      <span class="section-count">2 ссылки</span>
+    </div>
+    <div class="link-list">
+      <a class="link-card" href="https://ruslanmalovanyiblog.wordpress.com/efilism-rus/" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Официальный сайт Efilism RUS</div>
+          <div class="card-sub">Полный каталог всех соцсетей (YouTube, TikTok, Reddit, Discord, X, Threads и др.)</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://www.instagram.com/ruslan_malovanyi" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Instagram</div>
+          <div class="card-sub">@ruslan_malovanyi — короткие форматы и обновления проекта</div>
+        </div>
+        <div class="card-arrow" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="hub-footer">
+    <p><strong>Efilism RUS</strong> · Философско-просветительский проект · Редакция 2026</p>
+    <p>Строгий научный подход и безусловный приоритет ненасилия к уже живущим.</p>
+  </footer>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite">Ссылка скопирована</div>
+
+<script>
+  (function () {
+    const HUB_URL = 'https://bohdan19p-bit.github.io/efilism-faq/start.html';
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeLabel = document.getElementById('themeLabel');
+    const themeIcon = document.getElementById('themeIcon');
+    const copyBtn = document.getElementById('copyHubLink');
+    const toast = document.getElementById('toast');
+    const pills = document.querySelectorAll('.filter-pill');
+    const sections = document.querySelectorAll('.hub-section');
+    let toastTimer = null;
+
+    function showToast(msg) {
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+        if (themeLabel) themeLabel.textContent = 'Светлая тема';
+        if (themeIcon) {
+          themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+        }
+      } else {
+        root.removeAttribute('data-theme');
+        if (themeLabel) themeLabel.textContent = 'Тёмная тема';
+        if (themeIcon) {
+          themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+        }
+      }
+    }
+
+    try {
+      const savedTheme = localStorage.getItem('efilism_hub_theme');
+      if (savedTheme === 'dark') applyTheme('dark');
+    } catch (e) {}
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function () {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        try {
+          localStorage.setItem('efilism_hub_theme', next);
+        } catch (e) {}
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(HUB_URL).then(function () {
+            showToast('Ссылка на хаб скопирована');
+          }).catch(function () {
+            fallbackCopy(HUB_URL);
+          });
+        } else {
+          fallbackCopy(HUB_URL);
+        }
+      });
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('Ссылка на хаб скопирована');
+      } catch (e) {
+        showToast('Скопируйте адрес из строки браузера');
+      }
+      document.body.removeChild(ta);
+    }
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        const target = pill.getAttribute('data-filter');
+        pills.forEach(function (p) {
+          const isActive = p === pill;
+          p.classList.toggle('active', isActive);
+          p.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        sections.forEach(function (sec) {
+          const match = target === 'all' || sec.getAttribute('data-section') === target;
+          sec.classList.toggle('hidden', !match);
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
