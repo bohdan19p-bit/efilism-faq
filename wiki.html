@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эфилизм Вики (Русская адаптация 2026) · Efilism RUS</title>
+  <meta name="description" content="Полная адаптированная русскоязычная версия Эфилизм Вики, согласованная с монографией Efilism RUS 2026 года: 5 разделов-страниц, оглавление и прямые якоря.">
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-soft: #eef3f9;
+      --primary: #1b365d;
+      --primary-hover: #274c82;
+      --accent: #2b5b84;
+      --text: #1f2933;
+      --muted: #52606d;
+      --border: #d9e2ec;
+      --badge-bg: #e6eef8;
+      --badge-text: #1b365d;
+      --warn-bg: #fff8eb;
+      --warn-border: #e6c68b;
+      --warn-text: #7a4f01;
+      --quote-bg: #f3f6fa;
+      --shadow: 0 2px 10px rgba(27, 54, 93, 0.06);
+      --radius: 12px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f1722;
+      --surface: #172231;
+      --surface-soft: #1d2c40;
+      --primary: #7cb0eb;
+      --primary-hover: #9bc4f2;
+      --accent: #a6cbf5;
+      --text: #e6edf5;
+      --muted: #9fb0c4;
+      --border: #2a3b52;
+      --badge-bg: #20344d;
+      --badge-text: #b7d3f5;
+      --warn-bg: #262015;
+      --warn-border: #6e5832;
+      --warn-text: #f3d28c;
+      --quote-bg: #1c293a;
+      --shadow: 0 2px 12px rgba(0, 0, 0, 0.32);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+      padding: 4px 2px;
+    }
+
+    .nav-links a:hover { color: var(--primary); text-decoration: none; }
+
+    .theme-btn {
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 6px 12px;
+      min-height: 34px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 18px 14px 60px;
+    }
+
+    .portal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .portal-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .portal-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .portal-nav::-webkit-scrollbar { display: none; }
+
+    .portal-btn {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      min-height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--primary);
+      font-size: 0.87rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .portal-btn.active {
+      background: #1b365d;
+      border-color: #1b365d;
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .portal-btn.active {
+      background: #3b6ea5;
+      border-color: #3b6ea5;
+      color: #ffffff;
+    }
+
+    .wiki-page { display: none; }
+    .wiki-page.active { display: block; }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    .pill {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.38rem, 4.5vw, 1.95rem);
+      line-height: 1.2;
+      color: var(--primary);
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .toc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .toc-box summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .toc-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      font-size: 0.89rem;
+    }
+
+    .toc-list li { margin-bottom: 4px; }
+    .toc-sub {
+      margin: 4px 0 6px;
+      padding-left: 18px;
+      list-style: circle;
+    }
+
+    article.wiki-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 68px;
+    }
+
+    .h-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: var(--primary);
+      line-height: 1.25;
+      scroll-margin-top: 68px;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.07rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      scroll-margin-top: 68px;
+    }
+
+    h4 {
+      margin: 16px 0 6px;
+      font-size: 0.98rem;
+      color: var(--primary);
+      scroll-margin-top: 68px;
+    }
+
+    .anchor-btn {
+      flex: 0 0 auto;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--muted);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .anchor-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 14px; padding-left: 22px; }
+    li { margin-bottom: 6px; }
+
+    .callout {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      color: var(--warn-text);
+      border-radius: 10px;
+      padding: 13px 15px;
+      margin: 12px 0 16px;
+      font-size: 0.92rem;
+    }
+
+    .quote-card {
+      background: var(--quote-bg);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 15px;
+      margin: 12px 0 16px;
+      font-size: 0.94rem;
+    }
+
+    .triad {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .triad-item {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.93rem;
+    }
+
+    .triad-item strong { color: var(--primary); }
+
+    .qa-item {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .qa-item summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .qa-item p {
+      margin: 10px 0 0;
+      font-size: 0.92rem;
+    }
+
+    .bridge-note {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .link-tile {
+      display: block;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .link-tile span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .pager {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .pager-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--primary);
+      border-radius: 10px;
+      padding: 10px 14px;
+      min-height: 42px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: var(--shadow);
+    }
+
+    .pager-btn:hover { border-color: var(--primary); }
+
+    .back-top {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .flash {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1b365d;
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 50;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Efilism RUS · Эфилизм Вики</div>
+      <nav class="nav-links" aria-label="Сайты проекта">
+        <a href="https://bohdan19p-bit.github.io/efilism-faq/start.html" target="_blank" rel="noopener">Начать здесь</a>
+        <a href="https://bohdan19p-bit.github.io/efilism-atlas/" target="_blank" rel="noopener">Атлас v3.7</a>
+        <a href="https://bohdan19p-bit.github.io/efilism-faq/" target="_blank" rel="noopener">FAQ</a>
+        <a href="https://bohdan19p-bit.github.io/efilism-faq/glossary.html" target="_blank" rel="noopener">Глоссарий</a>
+        <button class="theme-btn" id="themeToggle" type="button">Тема</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="portal-box" aria-label="Страницы Эфилизм Вики">
+      <div class="portal-title">Портал Эфилизм Вики · 5 разделов</div>
+      <div class="portal-nav" id="portalNav" role="tablist">
+        <button class="portal-btn active" type="button" data-page="home" role="tab">Главная</button>
+        <button class="portal-btn" type="button" data-page="arena" role="tab">Философская арена</button>
+        <button class="portal-btn" type="button" data-page="value" role="tab">Объективная ценность</button>
+        <button class="portal-btn" type="button" data-page="truth" role="tab">Объективная истина</button>
+        <button class="portal-btn" type="button" data-page="faq" role="tab">FAQ и аргументы</button>
+      </div>
+    </section>
+
+    <!-- СТРАНИЦА 1: ГЛАВНАЯ -->
+    <section class="wiki-page active" id="page-home" data-page-section="home">
+      <section class="hero">
+        <span class="pill">Русская адаптация по монографии 2026 года · Раздел 1 из 5</span>
+        <h1>Эфилизм Вики: Главная страница</h1>
+        <p class="lead">
+          Структурированная русская версия классического портала «Эфилизм Вики» с сохранённой архитектурой разделов и прямыми якорями, очищенная от устаревших полемических перекосов и приведённая в строгое соответствие с монографией «Эфилизм. Философия абсолютного антинатализма».
+        </p>
+      </section>
+
+      <details class="toc-box" open>
+        <summary>Содержание страницы</summary>
+        <ol class="toc-list">
+          <li><a href="#welcome">Добро пожаловать в Эфилизм</a></li>
+          <li><a href="#dna-delusion">Эфилизм против гипноза биологии и культа ДНК</a></li>
+          <li>
+            <a href="#positive-experience">Эфилизм против иллюзий о позитивном опыте</a>
+            <ul class="toc-sub">
+              <li><a href="#fragility">3.1 Предельная хрупкость благ</a></li>
+              <li><a href="#sacrificial">3.2 Невозможность искупления жертвы задним числом</a></li>
+              <li><a href="#deprivationalism">3.3 Депривационная ловушка и квазипозитивность</a></li>
+              <li><a href="#indulging">3.4 Биохимическое топливо вместо разумного основания</a></li>
+              <li><a href="#utilitarian">3.5 Границы агрегативной арифметики</a></li>
+              <li><a href="#utopia">3.6 Утопия — последняя иллюзия</a></li>
+            </ul>
+          </li>
+          <li><a href="#origins">Истоки концепции и актуальный архив</a></li>
+        </ol>
+      </details>
+
+<article class="wiki-section" id="welcome">
+      <div class="h-row">
+        <h2>1. Добро пожаловать в Эфилизм</h2>
+        <button class="anchor-btn" type="button" data-anchor="welcome">#welcome</button>
+      </div>
+
+      <p>
+        <strong>Эфилизм — философия абсолютного антинатализма.</strong> Слово «абсолютный» здесь задаёт космологический и субстратно-нейтральный охват этического стандарта: один и тот же критерий допустимости чистого создания применяется ко всем чувствующим существам — биологическим и возможным искусственным, независимо от вида, эпохи и среды.
+      </p>
+
+      <div class="callout">
+        <strong>Этическая граница проекта:</strong> отождествлять эфилизм с призывами к насилию, убийству, териоциду или самоубийству — грубая подмена. Любое насилие и принуждение в отношении уже существующих субъектов категорически отвергается; оценка этичности создания нового существа не даёт никаких полномочий ограничивать автономию тех, кто уже живёт.
+      </div>
+
+      <p>В исследованиях глобальных и будущих рисков — рисков масштабного страдания и экзистенциальных рисков — принципиальны три положения:</p>
+      <ol>
+        <li><strong>Защитное решение</strong> — центральный практический вопрос: как не запускать и не воспроизводить причинные линии, в которых открыт путь к крайнему непоправимому вреду.</li>
+        <li><strong>Прекращение одной линии жизни</strong> само по себе ещё не гарантирует, что условия возникновения новых уязвимых субъектов не повторятся.</li>
+        <li><strong>Слепое развитие технологий</strong> автоматически не защищает от сценариев хуже вымирания, а при отсутствии строгих предохранителей способно кратно усилить масштаб страдания.</li>
+      </ol>
+      <p>Поэтому серьёзный философский разбор этого положения вещей необходим до того, как технологические процессы станут необратимыми.</p>
+
+      <div class="bridge-note">
+        В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-04" target="_blank" rel="noopener">REV-04 (область абсолютности)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-24" target="_blank" rel="noopener">REV-24 (риски масштабного страдания)</a>.
+      </div>
+    </article>
+
+<article class="wiki-section" id="dna-delusion">
+      <div class="h-row">
+        <h2>2. Эфилизм против гипноза биологии и культа ДНК</h2>
+        <button class="anchor-btn" type="button" data-anchor="dna-delusion">#dna-delusion</button>
+      </div>
+
+      <p>
+        Эфилизм последовательно продолжает светский натуралистический взгляд на реальность, распространяя критику иллюзий с религиозных догм на слепой культ биологической репликации. Даже когда человек отказывается от веры в благой космический замысел, в культуре и бытовой психологии часто сохраняется вера в то, что продолжение жизни оправдано само по себе.
+      </p>
+
+      <p>
+        По оценкам эволюционной биологии и моделирования истории биосферы, за 540+ миллионов лет существования чувствующих организмов через природный отбор прошли триллионы существ — от простейших позвоночных и млекопитающих до десятков миллиардов людей. Дикая природа устроена не как гармоничный сад, а как арена непрерывного голода, болезней, паразитизма и хищничества, где выживание одних постоянно оплачивается агонией других. Красота пейзажей скрывает эту фоновую цену, идущую без единой паузы на протяжении сотен миллионов лет.
+      </p>
+
+      <p>
+        С точки зрения современной биологии, копирование ДНК исправно выполняет свою физико-химическую функцию передачи наследственной информации. Однако с позиций сентиоцентрического критерия (способности испытывать боль и благополучие) эта слепая повторяемость порождает новых носителей нужды и уязвимости — то, что в монографии названо <strong>первичной дисфункцией</strong>. Эволюция — это не разумный инженер, а закономерный процесс без замысла и сочувствия: у молекулы ДНК нет заботы о судьбе конкретного носителя.
+      </p>
+
+      <p>
+        После 1859 года (появления дарвиновской теории) светская наука установила, что биологические виды сформированы мутациями и давлением отбора. Тем не менее <strong>гипноз биологии и культ ДНК</strong> (в терминологии монографии — <em>репликационное заблуждение</em> / <em>мифологизация ДНК</em>) регулярно возвращаются в новой обёртке: люди признают, что у Вселенной нет цели, но тут же добавляют — «значит, мы должны придумать цель сами и передавать её дальше». В итоге тяжёлый риск и страдания продолжают навязываться новым существам ради выдуманных оправданий.
+      </p>
+
+      <p>
+        На макроуровне это оборачивается конфликтом «команда ДНК против команды ДНК»: живые организмы вынуждены конкурировать за ресурсы и энергию, разрушать среду, вести войны и вытеснять друг друга. В итоге и победители, и проигравшие приходят к одному финалу — смерти, оставляя после себя лишь новые циклы уязвимости.
+      </p>
+
+      <div class="triad">
+        <div class="triad-item">
+          <strong>Положение А:</strong> вступление в существование всегда открывает для чувствующего существа реальный путь к серьёзному вреду, лишениям и необратимой утрате.
+        </div>
+        <div class="triad-item">
+          <strong>Положение Б:</strong> несоздание никогда и никому не причиняет вреда — до появления субъекта нет носителя интересов, которого могло бы что-либо лишить воздержание.
+        </div>
+        <div class="triad-item">
+          <strong>Положение В:</strong> значительная часть того, что принято считать «благами жизни», представляет собой лишь временное закрытие нужд, созданных самим фактом рождения, тогда как риск крайнего вреда остаётся открытым.
+        </div>
+      </div>
+
+      <div class="bridge-note">
+        В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-20" target="_blank" rel="noopener">REV-20 (функция и первичная дисфункция)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#ARG-08" target="_blank" rel="noopener">ARG-08 (чистое создание)</a>.
+      </div>
+    </article>
+
+<article class="wiki-section" id="positive-experience">
+      <div class="h-row">
+        <h2>3. Эфилизм против иллюзий о позитивном опыте</h2>
+        <button class="anchor-btn" type="button" data-anchor="positive-experience">#positive-experience</button>
+      </div>
+
+      <div class="quote-card">
+        <strong>Главный тезис раздела:</strong> положительный опыт жизни — ценное переживание для уже существующего субъекта, но не достаточное этическое основание для навязывания другому существу риска тяжёлого и непоправимого вреда.
+      </div>
+
+      <p>Ссылки на радость, любовь или достижения не выдерживают проверки как аргумент в пользу продолжения создания чувствующей жизни по шести взаимосвязанным причинам:</p>
+
+      <h3 id="fragility">
+        <span>3.1. Предельная хрупкость благ</span>
+        <button class="anchor-btn" type="button" data-anchor="fragility">#fragility</button>
+      </h3>
+      <p>
+        Положительные переживания хрупки и временны — их невозможно гарантированно удержать. Тяжёлый негативный опыт обладает несопоставимой разрушительной силой: тяжёлая хроническая боль, катастрофа или агония способны мгновенно и навсегда перечеркнуть любые накопленные блага. В реальной физике невозможно «откупиться» объёмом приятных переживаний от необратимого разрушения.
+      </p>
+
+      <h3 id="sacrificial">
+        <span>3.2. Невозможность искупления жертвы задним числом</span>
+        <button class="anchor-btn" type="button" data-anchor="sacrificial">#sacrificial</button>
+      </h3>
+      <p>
+        Даже если допустить, что сумма радостей у одних людей велика, физически невозможно вернуться во времени и компенсировать страдания конкретного существа, чья жизнь оказалась сломана необратимой трагедией. Счастье одного человека не искупает агонию другого. Оправдывать навязывание крайнего риска одним существам ради того, что другим повезёт испытать радость, — значит принимать жертвенную этику там, где в самом создании не было никакой исходной нужды.
+      </p>
+
+      <h3 id="deprivationalism">
+        <span>3.3. Депривационная ловушка и квазипозитивность</span>
+        <button class="anchor-btn" type="button" data-anchor="deprivationalism">#deprivationalism</button>
+      </h3>
+      <p>
+        Подавляющая часть повседневных удовольствий в биологической жизни устроена как закрытие предварительно созданной нехватки: утоление голода, снятие жажды, избавление от скуки, тревоги или боли. В монографии это называется <strong>квазипозитивностью</strong> — облегчением тяготы, которой до рождения не существовало. Даже когда возникает самостоятельная приятность без предшествующего страдания (например, внезапно услышанная красивая музыка), она ценна для уже живущего слушателя, но до его появления не существовало субъекта, который испытывал бы в ней потребность или терял бы что-то от несоздания.
+      </p>
+
+      <h3 id="indulging">
+        <span>3.4. Биохимическое топливо вместо разумного основания</span>
+        <button class="anchor-btn" type="button" data-anchor="indulging">#indulging</button>
+      </h3>
+      <p>
+        Механизмы удовольствия и привязанности закрепились в эволюции не как «высший смысл Вселенной», а как биохимические мотивационные контуры, удерживающие организм в гонке выживания и воспроизводства. То, что система вознаграждения заставляет нас желать продолжения, объясняет наше поведение психологически, но не превращает само влечение в объективное оправдание для возложения конститутивного риска на нового субъекта.
+      </p>
+
+      <h3 id="utilitarian">
+        <span>3.5. Границы агрегативной «утилитаристской» арифметики</span>
+        <button class="anchor-btn" type="button" data-anchor="utilitarian">#utilitarian</button>
+      </h3>
+      <p>
+        Большинство споров о рождении сводится к попытке взвесить «плюсы и минусы» на общей шкале. Чтобы увидеть, что упускает такой подсчёт, представим мысленный эксперимент: компьютерная система создаёт программу, наделяет её потребностью в работе, причиняет ей сбои при неудаче и встроенным стремлением держаться за существование. Затем программа сообщает, что хочет продолжать копироваться, потому что нашла «баланс плюсов и минусов» внутри цикла.
+      </p>
+      <p>
+        Такая арифметика выглядит убедительной только тогда, когда её отрывают от контекста <strong>чистого создания</strong>. За пределами искусственно запущенного цикла нет никакой исходной проблемы, которую требовалось бы решать запуском новых уязвимых субъектов. А без общей объективной единицы измерения для разных людей произвольное сложение чужих благ и чужих страданий теряет строгое основание.
+      </p>
+
+      <h3 id="utopia">
+        <span>3.6. Утопия — последняя иллюзия</span>
+        <button class="anchor-btn" type="button" data-anchor="utopia">#utopia</button>
+      </h3>
+      <p>Даже если представить общество будущего с максимально высоким уровнем благополучия, концепция технологической «утопии» остаётся уязвимой по пяти причинам:</p>
+      <ol>
+        <li><strong>Отсутствие исходной необходимости:</strong> нельзя логически обосновать, зачем вообще нужно запускать новых чувствующих субъектов, не сводя довод к простому «нам так хочется».</li>
+        <li><strong>Отсутствие абсолютной отказоустойчивости:</strong> пока система остаётся уязвимой перед физическими, биологическими или системными сбоями, любая «лучшая из возможных» конструкций остаётся незащищённой от катастрофического провала.</li>
+        <li><strong>Двойное назначение технологий:</strong> нейротехнологии, искусственный интеллект и методы управления сознанием, способные усиливать и продлевать приятные состояния, ровно в той же мере способны многократно усиливать и затягивать страдание (включая сценарии масштабного страдания при военном, криминальном или аварийном применении).</li>
+        <li><strong>Астрономический масштаб времени:</strong> на Земле путь до многоклеточной жизни занял свыше 3,5 миллиардов лет (многоклеточные организмы появились около 600 миллионов лет назад). По астрофизическим оценкам, примерно через 1,1 миллиарда лет светимость Солнца вырастет на 10%, средняя температура у поверхности поднимется до ~47 °C, запустив влажный парниковый эффект и испарение океанов, а примерно через 1,3 миллиарда лет исчезнут эукариоты и останутся лишь простейшие прокариоты. Природные масштабы создания и разрушения радикально асимметричны.</li>
+        <li><strong>Защитный вывод (принцип предотвращения):</strong> единственное по-настоящему надёжное решение — не открывать заново путь к конститутивному риску крайнего вреда там, где в этом нет нужды. Пока не создаются новые носители уязвимости, не возникает и нехватки в «непрожитых удовольствиях», а этическая ответственность перед уже живущими состоит в снижении страданий и защите их автономии.</li>
+      </ol>
+
+      <div class="bridge-note">
+        В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-09" target="_blank" rel="noopener">REV-09 (облегчение и удовольствие)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-02" target="_blank" rel="noopener">REV-02 (защитный порог)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-10" target="_blank" rel="noopener">REV-10 (границы агрегирования)</a>.
+      </div>
+    </article>
+
+<article class="wiki-section" id="origins">
+      <div class="h-row">
+        <h2>4. Истоки концепции и актуальный архив</h2>
+        <button class="anchor-btn" type="button" data-anchor="origins">#origins</button>
+      </div>
+
+      <p>
+        Раннюю формулировку эфилизма в открытом пространстве сформулировал философ и блогер <strong>Гэри</strong> (известный по каналам <em>Inmendham</em>, <em>DoNotGod</em> и <em>DraftScience</em>), на протяжении более 12 лет развивавший эту аргументацию в тысячах видеоразборов. Оригинальная англоязычная Fandom Wiki 2020–2022 годов зафиксировала этот ранний полемический этап.
+      </p>
+
+      <p>
+        В проекте <strong>Efilism RUS</strong> 2026 года эти идеи прошли полную академическую и редакторскую переработку в 49-главной монографии «Эфилизм. Философия абсолютного антинатализма», где каждый аргумент отделён от полемических преувеличений и проверен на логические и эмпирические границы.
+      </p>
+
+      <div class="links-grid">
+        <a class="link-tile" href="https://bohdan19p-bit.github.io/efilism-faq/start.html" target="_blank" rel="noopener">
+          Начать здесь (единый хаб)
+          <span>Все площадки, соцсети и книга</span>
+        </a>
+        <a class="link-tile" href="https://bohdan19p-bit.github.io/efilism-atlas/" target="_blank" rel="noopener">
+          Исследовательский атлас v3.7
+          <span>137 понятий, 18 аргументов, 12 возражений</span>
+        </a>
+        <a class="link-tile" href="https://bohdan19p-bit.github.io/efilism-faq/" target="_blank" rel="noopener">
+          Большой FAQ (55 вопросов)
+          <span>Понятные ответы для широкой аудитории</span>
+        </a>
+        <a class="link-tile" href="https://t.me/efilism_RUS/1093" target="_blank" rel="noopener">
+          Монография в Telegram
+          <span>Актуальная русская редакция 2026 года</span>
+        </a>
+      </div>
+
+      <a class="back-top" href="#top">↑ Вернуться к началу страницы</a>
+    </article>
+
+      <div class="pager">
+        <span></span>
+        <button class="pager-btn" type="button" data-go-page="arena">Далее: Философская арена →</button>
+      </div>
+    </section>
+
+    <!-- СТРАНИЦА 2: ФИЛОСОФСКАЯ АРЕНА -->
+    <section class="wiki-page" id="page-arena" data-page-section="arena">
+      <section class="hero">
+        <span class="pill">Раздел 2 из 5 · Мировоззренческий разбор</span>
+        <h1>Философская арена</h1>
+        <p class="lead">
+          Сопоставление эфилизма с традиционной моралью, веганизмом, фатализмом, субъективизмом и когнитивными защитными механизмами.
+        </p>
+      </section>
+
+      <details class="toc-box" open>
+        <summary>Содержание страницы</summary>
+        <ol class="toc-list">
+          <li><a href="#arena-ethics">Этика против догматической морали</a></li>
+          <li><a href="#arena-antinatalism">Ценность чувствующей жизни, веганизм и границы частных решений</a></li>
+          <li><a href="#arena-error-prime">Объективные ошибки, Первичная Ошибка и Первичный факт</a></li>
+          <li><a href="#arena-determinism">Детерминизм, фатализм и Номологический детерминированный хаос</a></li>
+          <li><a href="#arena-psychology">Психология защитных механизмов</a></li>
+          <li><a href="#arena-objectivity">Пессимизм, оптимизм и субъективизм</a></li>
+          <li><a href="#arena-epistemology">Анализандум, «случайность» и критика абсолютного скептицизма</a></li>
+        </ol>
+      </details>
+
+<article class="wiki-section" id="arena">
+      <div class="h-row">
+        <h2>Философская арена</h2>
+        <button class="anchor-btn" type="button" data-anchor="arena">#arena</button>
+      </div>
+
+      <p>
+        Раздел «Философская арена» сводит воедино столкновение эфилизма с основными мировоззренческими системами — от традиционной морали и частного активизма до фатализма, релятивизма и защитных механизмов психики. Ниже приведена адаптированная версия, очищенная от полемических преувеличений и согласованная с монографией 2026 года.
+      </p>
+
+      <h3 id="arena-ethics">
+        <span>5.1. Этика против догматической морали</span>
+        <button class="anchor-btn" type="button" data-anchor="arena-ethics">#arena-ethics</button>
+      </h3>
+      <p>
+        Эфилизм различает <strong>догматическую мораль</strong> (унаследованные табу, обычаи и предписания, принимаемые без проверки) и <strong>рациональную сентиоцентрическую этику</strong>. Этика работает с реальным физическим субстратом переживаний — способностью нервных и возможных искусственных систем испытывать боль и благополучие. В материальной реальности нет «джокеров» вне причинности: моральные оценки имеют вес постольку, поскольку опираются на реальное положение чувствующего субъекта, а не на авторитет традиции.
+      </p>
+
+      <h3 id="arena-antinatalism">
+        <span>5.2. Ценность чувствующей жизни, веганизм и границы частных решений</span>
+        <button class="anchor-btn" type="button" data-anchor="arena-antinatalism">#arena-antinatalism</button>
+      </h3>
+      <p>
+        Распространённая ошибка критиков — считать, будто эфилизм обесценивает саму жизнь. Всё ровно наоборот: именно признание реальной ценности и уязвимости чувствующего существа делает недопустимым его помещение между слепой репликацией ДНК и безразличной физической средой. Это похоже на попытку открыть ювелирную мастерскую посреди зоны боевых действий без какой-либо защиты.
+      </p>
+      <p>
+        Эфилизм полностью поддерживает <strong>веганизм</strong>, снижение страданий животных и добровольное воздержание от размножения как важные шаги по уменьшению вреда. Однако он указывает на масштабную границу этих подходов: даже полное исчезновение одного вида оставляет нетронутой основную причинную архитектуру дикой природы, где сотни миллионов лет продолжаются хищничество, болезни и массовая гибель потомства. Поэтому позиция, отвергающая натализм, но отказывающаяся рассматривать проблему страдания за пределами человеческого вида, оказывается непоследовательной (<em>парохиализм</em>).
+      </p>
+
+      <h3 id="arena-error-prime">
+        <span>5.3. Объективные ошибки, Первичная Ошибка и Первичный факт</span>
+        <button class="anchor-btn" type="button" data-anchor="arena-error-prime">#arena-error-prime</button>
+      </h3>
+      <p>
+        С точки зрения абсолютного антинатализма, любая чувствующая система — биологическая или синтетическая — проверяется одним критерием: открывает ли её чистое создание причинно реальный путь к крайнему непоправимому вреду без предварительного согласия и предшествующей нужды.
+      </p>
+      <div class="quote-card">
+        <strong>Важное разграничение монографии 2026 года:</strong><br>
+        • <strong>Первичная Ошибка</strong> — это не утверждение о «буквальной поломке» неживой материи (у физики нет цели), а оценочный диагноз базовых условий Вселенной относительно сентиоцентрического критерия: слепая причинная среда без замысла и защитных механизмов допускает возникновение и воспроизводство страдающих существ.<br>
+        • <strong>Первичный факт</strong> — самостоятельный открытый вопрос о предельном номологическом основании законов реальности (глава 10). Эти два понятия нельзя смешивать.
+      </div>
+      <p>
+        В оригинальной Вики здесь также обсуждались гипотетические сценарии сверхразумного ИИ и технологической сингулярности. В современной редакции они рассматриваются строго в рамках <strong>философии безопасности (риски масштабного страдания и экзистенциальные риски)</strong>: без надёжных этических предохранителей и запрета на создание новых цифровых страдающих субъектов рост технологической мощи способен лишь масштабировать риски.
+      </p>
+
+      <h3 id="arena-determinism">
+        <span>5.4. Детерминизм, фатализм и Номологический детерминированный хаос</span>
+        <button class="anchor-btn" type="button" data-anchor="arena-determinism">#arena-determinism</button>
+      </h3>
+      <p>
+        Детерминизм часто ошибочно приравнивают к <strong>фатализму</strong> — будто из причинности следует, что «ничего нельзя изменить». В действительности детерминизм утверждает лишь то, что любое следствие имеет достаточную причину, но сами конфигурации материи изменчивы (<em>контингентны</em>). Вода не обязана вечно оставаться в чаше — её состояние зависит от приложенных сил, и точно так же наши рассуждения, решения и этические аргументы являются реальными причинными звеньями, меняющими дальнейший ход событий.
+      </p>
+      <p>
+        Устройство Вселенной в монографии обозначается авторским термином <strong>Номологический детерминированный хаос</strong>: это строго закономерный физический процесс, в котором полностью отсутствует разумный замысел, цель или забота о благополучии. Именно в такой слепой среде из неживых «аналоговых» элементов (протонов, электронов и химических связей) при достаточной сложности возникают «цифровые» контуры нервных систем и сознательного опыта — уязвимые островки чувствующей жизни в равнодушном космосе.
+      </p>
+
+      <h3 id="arena-psychology">
+        <span>5.5. Психология защитных механизмов</span>
+        <button class="anchor-btn" type="button" data-anchor="arena-psychology">#arena-psychology</button>
+      </h3>
+      <p>
+        Биологическая психика формировалась отбором ради выживания и воспроизводства, а не ради беспристрастного поиска истины. Метакогниция — способность проверять собственные убеждения со стороны — позволяет замечать типовые когнитивные искажения. При этом в честной дискуссии <strong>содержание аргумента оппонента всегда проверяется независимо от его личных мотивов</strong>; психологические механизмы ниже описывают общие тенденции, а не повод навешивать ярлыки на конкретного собеседника:
+      </p>
+      <ul>
+        <li><strong>Парохиализм:</strong> сосредоточение на узком фрагменте проблемы (отдельном политическом строе, эпохе или симптоме) при игнорировании базовой архитектуры нужды и уязвимости.</li>
+        <li><strong>Управление страхом смерти:</strong> психологическая тенденция защищаться от осознания собственной уязвимости с помощью культурных мифов о «вечном продолжении» (для привязки к конкретному спору всегда нужны отдельные свидетельства).</li>
+        <li><strong>Шарада, конфабуляция и рационализация:</strong> подмена реальной картины удобным фасадом, бессознательное достраивание ложных объяснений и мотивированное подгоняние фактов под заранее выбранный вывод.</li>
+        <li><strong>Гипернормализация:</strong> привыкание к хроническому масштабу страданий и катастроф до такой степени, что они перестают восприниматься как аномалия.</li>
+        <li><strong>Исключительность, антропоцентризм и мания величия:</strong> необоснованная вера в то, что человеческий вид является «венцом Вселенной», а страдания других чувствующих существ имеют второстепенный вес.</li>
+      </ul>
+      <div class="quote-card">
+        «Возможно, тогда мы лучше поймём, почему именно определённые формы самообмана оказались адаптивными и столь устойчивыми, проникнув даже в саму философию и науку». — <em>Томас Метцингер</em>
+      </div>
+
+      <h3 id="arena-objectivity">
+        <span>5.6. Пессимизм, оптимизм и субъективизм</span>
+        <button class="anchor-btn" type="button" data-anchor="arena-objectivity">#arena-objectivity</button>
+      </h3>
+      <p>
+        Спор о «стакане наполовину пустом или наполовину полном» подменяет проверку фактов оценкой настроения. Для точной модели реальности важен не эмоциональный ярлык («оптимизм» или «пессимизм»), а соответствие фактам: сколько именно жидкости в стакане и каковы реальные риски системы.
+      </p>
+      <p>
+        Радикальный <strong>субъективизм и релятивизм</strong> («объективной истины не существует, всё — лишь личное мнение») сталкиваются с внутренним противоречием: чтобы обосновать сам тезис субъективизма как значимый, им приходится опираться на объективное утверждение о том, как устроено познание. Если же сам субъективизм — лишь частное мнение, он не имеет веса против проверяемых фактов о переживаемой боли.
+      </p>
+
+      <h3 id="arena-epistemology">
+        <span>5.7. Анализандум, «случайность» и критика абсолютного скептицизма</span>
+        <button class="anchor-btn" type="button" data-anchor="arena-epistemology">#arena-epistemology</button>
+      </h3>
+      <p>
+        В терминологии проекта <strong>анализандум</strong> (в специальном значении §4.1 монографии) обозначает псевдообъяснение, которое создаёт видимость строгой теории, но скрывает грубые логические разрывы — например, утверждение «причинно-следственные связи — лишь выдумка, <em>вызванная</em> нашим мозгом», которое тайно использует саму причинность для её отрицания.
+      </p>
+      <p>
+        Аналогично бытовое слово <strong>«случайность»</strong> часто служит заглушкой там, где у наблюдателя просто не хватает данных о скрытых причинах процесса. А <strong>абсолютный скептицизм</strong> (или аргумент «чёрного лебедя» в форме «нужно вечно сомневаться вообще во всём») разрушает сам себя: требование сомневаться во всём обязывает усомниться и в самом этом правиле. Кроме того, отсутствие всеведения не отменяет практической ответственности: для этического предохранителя достаточно надёжного знания о причинно реальных путях к тяжёлому вреду в доступных нам условиях.
+      </p>
+
+      <div class="bridge-note">
+        В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-11" target="_blank" rel="noopener">REV-11 (Первичная Ошибка и Первичный факт)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-16" target="_blank" rel="noopener">REV-16 (законы и детерминизм)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-22" target="_blank" rel="noopener">REV-22 (мотив оппонента)</a>.
+      </div>
+      <a class="back-top" href="#top">↑ Вернуться к началу страницы</a>
+    </article>
+
+      <div class="pager">
+        <button class="pager-btn" type="button" data-go-page="home">← Главная</button>
+        <button class="pager-btn" type="button" data-go-page="value">Далее: Объективная ценность →</button>
+      </div>
+    </section>
+
+    <!-- СТРАНИЦА 3: ОБЪЕКТИВНАЯ ЦЕННОСТЬ -->
+    <section class="wiki-page" id="page-value" data-page-section="value">
+      <section class="hero">
+        <span class="pill">Раздел 3 из 5 · Аксиология и опыт</span>
+        <h1>Объективная ценность</h1>
+        <p class="lead">
+          Почему страдание остаётся реальным и проверяемым фактом, как устроена реляционная объективность и почему несоздание работает как двойной предохранитель.
+        </p>
+      </section>
+
+      <details class="toc-box" open>
+        <summary>Содержание страницы</summary>
+        <ol class="toc-list">
+          <li><a href="#value-nihilism">Почему нигилизм и субъективизм не спасают натализм</a></li>
+          <li><a href="#value-phenomenology">Эпистемология и феноменология: почему боль нельзя «опровергнуть»</a></li>
+          <li><a href="#value-valence">Ноцицепция, отрицательная валентность и реляционная объективность</a></li>
+          <li><a href="#value-failsafe">Аксиология и двойной предохранитель несоздания</a></li>
+          <li><a href="#value-transparency">Прозрачность сознания</a></li>
+        </ol>
+      </details>
+
+<article class="wiki-section" id="value">
+      <div class="h-row">
+        <h2>Объективная ценность</h2>
+        <button class="anchor-btn" type="button" data-anchor="value">#value</button>
+      </div>
+
+      <p>
+        Раздел «Объективная ценность» отвечает на главный аргумент релятивистов и нигилистов: «если ценность существует только в переживаниях, значит, боль и страдание не имеют объективного значения». В монографии 2026 года эта линия выстроена без подмены факта нормой — через чёткое разделение реальности переживания, его внутренней неблагоприятности и этического принципа равного учёта.
+      </p>
+
+      <h3 id="value-nihilism">
+        <span>6.1. Почему нигилизм и субъективизм не спасают натализм</span>
+        <button class="anchor-btn" type="button" data-anchor="value-nihilism">#value-nihilism</button>
+      </h3>
+      <p>
+        Даже если на минуту допустить, что радикальный нигилизм или субъективизм верны, это ни на шаг не приближает оправдание создания новой жизни. Из тезиса «ничто не имеет объективного смысла» не вытекает ни право, ни разумное основание запускать новых уязвимых субъектов. Бремя обоснования всегда лежит на том, кто совершает рискованное действие за счёт другого, поэтому нигилизм остаётся бесплодным для пронаталистической позиции.
+      </p>
+
+      <h3 id="value-phenomenology">
+        <span>6.2. Эпистемология и феноменология: почему боль нельзя «опровергнуть»</span>
+        <button class="anchor-btn" type="button" data-anchor="value-phenomenology">#value-phenomenology</button>
+      </h3>
+      <p>
+        Важно различать два слоя сознательной жизни:
+      </p>
+      <ul>
+        <li><strong>Познавательный слой (эпистемология):</strong> убеждения, цели, гипотезы и воспоминания. Они бывают истинными или ложными — их можно исправить, проверив факты.</li>
+        <li><strong>Слой непосредственного переживания (феноменология):</strong> само событие боли, удушья, страха или радости, протекающее в нервной системе. Переживание — это реальный физический процесс во Вселенной, а не утверждение, которое можно «опровергнуть» спором.</li>
+      </ul>
+      <p>
+        Даже если человек испытал острую боль из-за иллюзии или ложной тревоги, ошибка касается причины, но не отменяет факта самого переживания. При этом монография отдельно различает само состоявшееся переживание и поздний отчёт о нём в памяти: память способна переосмыслять прошлую тяготу, но не стирает того, что в момент события субъекту было мучительно.
+      </p>
+
+      <h3 id="value-valence">
+        <span>6.3. Ноцицепция, отрицательная валентность и реляционная объективность</span>
+        <button class="anchor-btn" type="button" data-anchor="value-valence">#value-valence</button>
+      </h3>
+      <p>
+        В современной нейронауке и философии сознания строго различают два явления: <strong>ноцицепция</strong> — это нейронный сигнал об угрозе или повреждении ткани, а <strong>отрицательная валентность</strong> — осознанное мучительное качество самого переживания, которое субъект стремится прекратить.
+      </p>
+      <p>
+        То, что переживание происходит внутри субъекта, не делает его произвольной выдумкой. Это <strong>реляционная объективность</strong>: свойство принадлежит реальному отношению между состоянием и его носителем. Например, арахисовая паста для одного человека вызывает положительную валентность (насыщение), а для другого — тяжёлую аллергическую реакцию и страдание. Различие реакций не превращает мучительность аллергии в «личное мнение наблюдателя» — в обоих случаях перед нами проверяемый факт о реальном состоянии конкретного субъекта.
+      </p>
+      <div class="quote-card">
+        <strong>Трёхуровневый переход монографии (§§22.4, 23.2):</strong> сначала фиксируется факт переживания; затем его внутренняя неблагоприятность для носителя (внешняя польза болезненного лечения не отменяет мучительности самой боли); и наконец, самостоятельный этический принцип равного учёта — сходная боль не теряет веса только от того, что её испытывает другой субъект.
+      </div>
+
+      <h3 id="value-failsafe">
+        <span>6.4. Аксиология и двойной предохранитель несоздания</span>
+        <button class="anchor-btn" type="button" data-anchor="value-failsafe">#value-failsafe</button>
+      </h3>
+      <p>
+        Сентиентная жизнь неизбежно стартует с уязвимости: организм вынужден постоянно обслуживать нужды, чтобы не столкнуться с вредом. При этом абсолютной гарантии защиты от тяжёлой катастрофы не существует. Отсюда вытекает асимметрия несоздания:
+      </p>
+      <ol>
+        <li>Несозданный субъект не может лишиться благ.</li>
+        <li>Он не может столкнуться с дефицитом, болью или агонией.</li>
+        <li>Для предотвращения ущерба не требуется, чтобы «кто-то потом радовался», что не был создан.</li>
+      </ol>
+      <p>
+        Это и есть <strong>двойной предохранитель</strong>: предотвращение потери обеспечивается отсутствием того, кто мог бы потерять; предотвращение страдания — отсутствием носителя уязвимости. Пока механизм создания новых субъектов не запущен, не возникает ни жертвы, ни нехватки «непрожитых радостей».
+      </p>
+
+      <h3 id="value-transparency">
+        <span>6.5. Прозрачность сознания</span>
+        <button class="anchor-btn" type="button" data-anchor="value-transparency">#value-transparency</button>
+      </h3>
+      <p>
+        В современной философии сознания (в частности, в модели самомодели Томаса Метцингера) <strong>феноменальная прозрачность</strong> означает, что мозг не воспринимает собственные активные модели боли или мира как «просто картинки» — субъект переживает их непосредственно, как саму реальность. Как мы смотрим сквозь чистое стекло и видим птицу, а не само стекло, так и в состоянии сильной боли человек не может «передумать» её чисто умственным усилием.
+      </p>
+      <p>
+        Поэтому попытки свести страдание к «незначимой механической репрезентации» не работают: прозрачность объясняет, почему непосредственная мучительность переживания остаётся неустранимым фактом для носителя опыта, даже если он теоретически знает о работе нейронов.
+      </p>
+
+      <div class="bridge-note">
+        В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-01" target="_blank" rel="noopener">REV-01 (ценность и локальная антиценность)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-12" target="_blank" rel="noopener">REV-12 (переживание и отчёт)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-17" target="_blank" rel="noopener">REV-17 (модели сознания)</a>.
+      </div>
+      <a class="back-top" href="#top">↑ Вернуться к началу страницы</a>
+    </article>
+
+      <div class="pager">
+        <button class="pager-btn" type="button" data-go-page="arena">← Философская арена</button>
+        <button class="pager-btn" type="button" data-go-page="truth">Далее: Объективная истина →</button>
+      </div>
+    </section>
+
+    <!-- СТРАНИЦА 4: ОБЪЕКТИВНАЯ ИСТИНА -->
+    <section class="wiki-page" id="page-truth" data-page-section="truth">
+      <section class="hero">
+        <span class="pill">Раздел 4 из 5 · Логика и причинность</span>
+        <h1>Объективная истина</h1>
+        <p class="lead">
+          Причинность, метакогниция, модальная логика, номологические ограничения и этическое значение необратимости событий.
+        </p>
+      </section>
+
+      <details class="toc-box" open>
+        <summary>Содержание страницы</summary>
+        <ol class="toc-list">
+          <li><a href="#truth-determinism">Причинность и свобода воли</a></li>
+          <li><a href="#truth-metacognition">Метакогниция и структура объяснения</a></li>
+          <li><a href="#truth-modal">Модальная логика и необходимая истина</a></li>
+          <li><a href="#truth-nomological">Номологическая необходимость и Первичный факт</a></li>
+          <li><a href="#truth-contingency">Изменчивость, необходимость и необратимость событий</a></li>
+        </ol>
+      </details>
+
+<article class="wiki-section" id="truth">
+      <div class="h-row">
+        <h2>Объективная истина</h2>
+        <button class="anchor-btn" type="button" data-anchor="truth">#truth</button>
+      </div>
+
+      <p>
+        Раздел «Объективная истина» собирает логический и естественно-научный фундамент эфилизма: причинность, метакогницию, модальную логику и вопрос о предельных ограничениях реальности. В адаптации 2026 года сохранён строгий ход рассуждений, но сняты необоснованные претензии на «окончательную теорию всего».
+      </p>
+
+      <h3 id="truth-determinism">
+        <span>7.1. Причинность и свобода воли</span>
+        <button class="anchor-btn" type="button" data-anchor="truth-determinism">#truth-determinism</button>
+      </h3>
+      <p>
+        Идея «абсолютной, беспричинной свободы воли» внутренне противоречива в причинно-следственном мире: событие не может «вызвать само себя» из пустоты, а замена причины словом «случайность» не добавляет агенту никакого контроля. При этом отказ от мифа о беспричинной воле не отменяет ответственности и практического выбора: наши знания, аргументы и этические нормы сами являются реальными причинами, определяющими дальнейшие поступки.
+      </p>
+
+      <h3 id="truth-metacognition">
+        <span>7.2. Метакогниция и структура объяснения</span>
+        <button class="anchor-btn" type="button" data-anchor="truth-metacognition">#truth-metacognition</button>
+      </h3>
+      <p>
+        <strong>Метакогниция</strong> — способность проверять собственные мысли, предвзятости и логические шаги со стороны — позволяет выходить за пределы слепых биологических импульсов и отличать удобную иллюзию от проверяемой модели реальности.
+      </p>
+      <p>
+        Честное объяснение всегда разделяет <strong>то, что требуется объяснить</strong>, и <strong>механизм, который это объясняет</strong>. Классический пример — дерево, упавшее в лесу, когда рядом никого нет:
+      </p>
+      <ol>
+        <li>Физическое колебание воздуха происходит независимо от наблюдателя — это реальный причинный механизм.</li>
+        <li>Звуковое ощущение возникает только тогда, когда эти колебания преобразуются слуховой системой чувствующего существа.</li>
+      </ol>
+      <p>Такое разведение закрывает пустые споры и показывает, где проходит граница между неживой физикой и субъективным опытом.</p>
+
+      <h3 id="truth-modal">
+        <span>7.3. Модальная логика и необходимая истина</span>
+        <button class="anchor-btn" type="button" data-anchor="truth-modal">#truth-modal</button>
+      </h3>
+      <p>
+        На самом базовом уровне реальность описывается различением того, <strong>что имеет место</strong>, и того, <strong>чего нет</strong>, а также различением возможного, необходимого и невозможного. Даже попытка полностью отрицать существование необходимых истин опровергает саму себя: утверждение «никаких необходимых истин не существует» само претендует на статус необходимой истины.
+      </p>
+      <p>
+        Этот принцип важен не как отвлечённая игра ума, а как опора против интеллектуального бегства: нельзя отменить объективную реальность страдания, сославшись на то, что «любую истину можно объявить относительной».
+      </p>
+
+      <h3 id="truth-nomological">
+        <span>7.4. Номологическая необходимость и Первичный факт</span>
+        <button class="anchor-btn" type="button" data-anchor="truth-nomological">#truth-nomological</button>
+      </h3>
+      <p>
+        Если логика фиксирует, что непротиворечиво, то <strong>номологические ограничения</strong> (законы физики) определяют, какие события в реальности допускаются, а какие запрещены. Философская задача здесь состоит в том, чтобы понять, какие ограничения действуют, как они применяются и что задаёт сами границы возможного.
+      </p>
+      <p>
+        В исторических материалах этот предельный вопрос обозначался как <strong>Первичный факт</strong>. В монографии 2026 года подчёркивается его честный исследовательский статус: единственность и точная физическая природа предельного основания законов остаются открытым вопросом науки и философии, а этический вывод о недопустимости навязывания крайнего риска при чистом создании не зависит от построения «окончательной теории всего».
+      </p>
+
+      <h3 id="truth-contingency">
+        <span>7.5. Изменчивость, необходимость и необратимость событий</span>
+        <button class="anchor-btn" type="button" data-anchor="truth-contingency">#truth-contingency</button>
+      </h3>
+      <p>
+        Все явления делятся на устойчивые ограничения и изменчивые состояния, которые могут складываться по-разному. Второе ключевое правило реальности — <strong>необратимость свершившегося</strong>: то, что уже произошло, нельзя «отменить назад во времени».
+      </p>
+      <p>
+        Именно эта необратимость придаёт этическому выбору предельную серьёзность: страдание, которому уже подвергли созданное существо, невозможно стереть никакими последующими успехами или объяснениями. Поэтому предотвращение ненужного конститутивного риска принципиально сильнее любых попыток «исправить последствия потом».
+      </p>
+
+      <div class="bridge-note">
+        В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-13" target="_blank" rel="noopener">REV-13 (объяснительный аудит)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-14" target="_blank" rel="noopener">REV-14 (истина и отчёт)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-16" target="_blank" rel="noopener">REV-16 (законы и модели)</a>.
+      </div>
+      <a class="back-top" href="#top">↑ Вернуться к началу страницы</a>
+    </article>
+
+      <div class="pager">
+        <button class="pager-btn" type="button" data-go-page="value">← Объективная ценность</button>
+        <button class="pager-btn" type="button" data-go-page="faq">Далее: FAQ и аргументы →</button>
+      </div>
+    </section>
+
+    <!-- СТРАНИЦА 5: FAQ И АРГУМЕНТЫ -->
+    <section class="wiki-page" id="page-faq" data-page-section="faq">
+      <section class="hero">
+        <span class="pill">Раздел 5 из 5 · Вопросы и возражения</span>
+        <h1>FAQ Вики и разбор аргументов</h1>
+        <p class="lead">
+          Ключевые вопросы и ответы классической Вики, основные доводы против создания жизни и разбор самых частых возражений.
+        </p>
+      </section>
+
+      <details class="toc-box" open>
+        <summary>Содержание страницы</summary>
+        <ol class="toc-list">
+          <li><a href="#faq-core">Ключевые вопросы и ответы</a></li>
+          <li>
+            <a href="#faq-arguments">Главные аргументы против создания жизни</a>
+            <ul class="toc-sub">
+              <li><a href="#faq-consent">Невозможность предварительного согласия</a></li>
+              <li><a href="#faq-deal">Асимметрия «сделки ДНК»</a></li>
+              <li><a href="#faq-nature">Дикая природа и границы человекоцентризма</a></li>
+              <li><a href="#faq-sunk-cost">Ошибка невозвратных затрат</a></li>
+            </ul>
+          </li>
+          <li><a href="#faq-rebuttals">Разбор частых возражений</a></li>
+        </ol>
+      </details>
+
+    <article class="wiki-section" id="faq">
+      <div class="h-row">
+        <h2>FAQ Вики и разбор аргументов</h2>
+        <button class="anchor-btn" type="button" data-anchor="faq">#faq</button>
+      </div>
+
+      <p>
+        Заключительный раздел объединяет классические вопросы оригинальной Вики и разбор наиболее частых пронаталистических возражений — в выверенной редакции, согласованной с монографией 2026 года. Для ещё более подробных ответов на 55 вопросов см. <a href="https://bohdan19p-bit.github.io/efilism-faq/" target="_blank" rel="noopener">Большой FAQ Efilism RUS</a>.
+      </p>
+
+      <h3 id="faq-core">
+        <span>1. Ключевые вопросы и ответы</span>
+        <button class="anchor-btn" type="button" data-anchor="faq-core">#faq-core</button>
+      </h3>
+
+      <details class="qa-item" open>
+        <summary>Чем эфилизм отличается от обычного антинатализма?</summary>
+        <p>Антинатализм обычно фокусируется на этичности рождения людей. Эфилизм — это <strong>философия абсолютного антинатализма</strong>: он применяет единый сентиоцентрический стандарт ко всем чувствующим существам (людям, животным и возможным будущим искусственным субъектам) и разбирает саму причинную архитектуру, в которой возникает и воспроизводится страдание.</p>
+      </details>
+
+      <details class="qa-item">
+        <summary>Если отказаться от создания жизни, не исчезнет ли сама рациональность?</summary>
+        <p>Рациональность нужна для того, чтобы распознавать и решать реальные проблемы. Если нет чувствующих носителей, сталкивающихся с болью, нуждой и риском катастрофы, то отсутствие «инструмента для решения проблем» само по себе ни для кого не является проблемой или потерей.</p>
+      </details>
+
+      <details class="qa-item">
+        <summary>Есть ли ценность без чувствующих существ? Как же красивая гора на безжизненной планете?</summary>
+        <p>Красота, радость и значимость возникают в восприятии и оценке чувствующего сознания. Самой горе безразлично, существует она или нет и любуется ли ею кто-нибудь. Без субъекта опыта у неживой материи нет ни собственного благополучия, ни ущерба.</p>
+      </details>
+
+      <details class="qa-item">
+        <summary>Разве наука и прогресс не исправят жизнь в будущем?</summary>
+        <p>Технологический прогресс действительно облегчает многие тяготы уже живущих людей, и это важно поддерживать. Однако прогресс не отменяет двух фундаментальных границ: отсутствия абсолютной отказоустойчивости и двойного назначения технологий. Инструменты, способные тонко управлять сознанием и биологией, одновременно открывают путь к новым, ещё более тяжёлым рискам масштабного страдания.</p>
+      </details>
+
+      <details class="qa-item">
+        <summary>Что может сделать один человек прямо сейчас?</summary>
+        <p>Эфилизм не призывает к отчаянию и тем более не допускает насилия. Практическая позиция складывается из трёх честных шагов: не создавать новых носителей конститутивного риска, реально помогать уже существующим людям и животным (снижать страдания, уважать автономию и добровольность) и спокойно, аргументированно разбирать тему в открытой дискуссии.</p>
+      </details>
+
+      <h3 id="faq-arguments">
+        <span>2. Главные аргументы против создания жизни</span>
+        <button class="anchor-btn" type="button" data-anchor="faq-arguments">#faq-arguments</button>
+      </h3>
+
+      <h4 id="faq-consent">Невозможность предварительного согласия и бремя обоснования</h4>
+      <p>
+        Невозможность спросить ещё не существующего субъекта не означает его «отказа» — до создания субъекта просто нет. Однако именно поэтому инициатор не может сослаться на согласие будущего человека в оправдание риска. В отличие от экстренного спасения уже живущего человека без сознания (где есть актуальный интерес избежать вреда), при чистом создании нет никакой предшествующей беды, от которой нужно было бы спасать. Бремя доказательства допустимости такой ставки целиком лежит на том, кто её назначает.
+      </p>
+
+      <h4 id="faq-deal">Асимметрия «сделки ДНК» и отказ от жертвенности</h4>
+      <p>
+        Создавая чувствующее существо, инициатор вводит его в условия, где невозможно гарантировать защиту от крайних страданий и невозможно компенсировать трагедию задним числом. Ссылаться на то, что «многие довольны жизнью», недостаточно: положительная оценка уже живущего человека отражает его нынешнее отношение к прожитому, но не превращается в предварительное разрешение и не снимает ответственности за тех, на кого выпадает худший исход.
+      </p>
+
+      <h4 id="faq-nature">Дикая природа и границы человекоцентризма</h4>
+      <p>
+        Отождествление природы с «гармоничным парком» игнорирует масштаб страданий диких животных: подавляющее большинство рождённых в природе организмов погибает вскоре после рождения от голода, паразитов, болезней и хищников. Боль не становится менее реальной от того, что её испытывает не человек.
+      </p>
+
+      <h4 id="faq-sunk-cost">Ошибка невозвратных затрат («мы уже прошли такой долгий путь»)</h4>
+      <p>
+        То, что в истории эволюции и человечества уже были принесены колоссальные жертвы, не создаёт обязанности продолжать цикл страданий дальше. В логике и теории решений прошлые необратимые потери не оправдывают новые рискованные вложения, если сам процесс не имеет разумной цели и гарантированной защиты.
+      </p>
+
+      <h3 id="faq-rebuttals">
+        <span>3. Разбор частых возражений</span>
+        <button class="anchor-btn" type="button" data-anchor="faq-rebuttals">#faq-rebuttals</button>
+      </h3>
+
+      <div class="triad">
+        <div class="triad-item">
+          <strong>«Вы не доказали, что боль в мире перевешивает радость»</strong><br>
+          Защитный порог антинатализма вообще не требует вычислять «общую сумму всех радостей и болей человечества». Даже если представить высокий средний уровень благополучия, он не объясняет, откуда у инициатора берётся полномочие подвергать нового субъекта причинно реальному риску непоправимого вреда без его согласия и без исходной нужды.
+        </div>
+        <div class="triad-item">
+          <strong>«Антинатализм — это евгеника или культ смерти»</strong><br>
+          Евгеника — это принудительный отбор, кому разрешено размножаться, а кому нет. Антинатализм выступает против создания нового конститутивного риска вообще и категорически отвергает любое принуждение. Точно так же отказ от создания новой уязвимости — это забота о предотвращении страданий, а не враждебность к уже живущим.
+        </div>
+        <div class="triad-item">
+          <strong>«У вас просто когнитивный перекос в негатив»</strong><br>
+          Аргумент проверяется не психологическим ярлыком, а симметрией критерия: если те же самые факты о рисках и отсутствии согласия предъявить в любой другой сфере жизни (например, в медицинской этике или технике безопасности), их без колебаний признают веским основанием для запрета односторонней ставки за чужой счёт.
+        </div>
+        <div class="triad-item">
+          <strong>«Ребёнок придаёт моей жизни смысл» и «У меня есть право рожать»</strong><br>
+          Личный выбор заканчивается там, где его главные и необратимые последствия ложатся на третье лицо. Потребность взрослого в смысле, опоре или самореализации — его собственная задача, но она не превращает другое чувствующее существо в средство для её решения.
+        </div>
+      </div>
+
+      <div class="bridge-note">
+        В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#ARG-08" target="_blank" rel="noopener">ARG-08 (согласие и создание)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#CRI:O09" target="_blank" rel="noopener">CRI:O09 (возражение о спасении)</a> · <a href="https://bohdan19p-bit.github.io/efilism-faq/" target="_blank" rel="noopener">Большой FAQ (55 вопросов)</a>.
+      </div>
+    </article>
+
+      <div class="pager">
+        <button class="pager-btn" type="button" data-go-page="truth">← Объективная истина</button>
+        <button class="pager-btn" type="button" data-go-page="home">Вернуться на Главную</button>
+      </div>
+    </section>
+
+    <footer>
+      <div>© Efilism RUS · Адаптированная Эфилизм Вики (2026)</div>
+      <div>Все 5 разделов и прямые якоря <code>#имя-раздела</code> работают автономно</div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Ссылка с якорем скопирована</div>
+
+  <script>
+    const elToast = document.getElementById('toast');
+    const portalBtns = document.querySelectorAll('.portal-btn');
+    const wikiPages = document.querySelectorAll('.wiki-page');
+
+    function showToast(msg) {
+      elToast.textContent = msg;
+      elToast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => elToast.classList.remove('show'), 1800);
+    }
+
+    function switchPage(pageId, scrollToTop) {
+      let found = false;
+      wikiPages.forEach(sec => {
+        const active = sec.dataset.pageSection === pageId;
+        sec.classList.toggle('active', active);
+        if (active) found = true;
+      });
+      if (!found) return;
+      portalBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.page === pageId);
+      });
+      if (scrollToTop) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function navigateToHash(rawHash) {
+      const id = decodeURIComponent(rawHash || '').replace(/^#/, '').trim();
+      if (!id) return;
+      if (id === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      // Direct page names
+      const pageMatch = document.querySelector('.wiki-page[data-page-section="' + id + '"]');
+      if (pageMatch) {
+        switchPage(id, true);
+        return;
+      }
+      const target = document.getElementById(id);
+      if (!target) return;
+      const parentPage = target.closest('.wiki-page');
+      if (parentPage) {
+        switchPage(parentPage.dataset.pageSection, false);
+      }
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1600);
+      }, 30);
+    }
+
+    function copyAnchor(anchor) {
+      const base = window.location.href.split('#')[0];
+      const url = base + '#' + anchor;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => showToast('Скопирован якорь #' + anchor)).catch(() => fallbackCopy(url, anchor));
+      } else {
+        fallbackCopy(url, anchor);
+      }
+    }
+
+    function fallbackCopy(text, anchor) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('Скопирован якорь #' + anchor); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    document.addEventListener('click', (e) => {
+      const portalBtn = e.target.closest('[data-page]');
+      if (portalBtn) {
+        const p = portalBtn.dataset.page;
+        switchPage(p, true);
+        try { history.replaceState(null, '', '#' + p); } catch (err) {}
+        return;
+      }
+      const goBtn = e.target.closest('[data-go-page]');
+      if (goBtn) {
+        const p = goBtn.dataset.goPage;
+        switchPage(p, true);
+        try { history.replaceState(null, '', '#' + p); } catch (err) {}
+        return;
+      }
+      const anchorBtn = e.target.closest('[data-anchor]');
+      if (anchorBtn) {
+        copyAnchor(anchorBtn.dataset.anchor);
+        return;
+      }
+      const hashLink = e.target.closest('a[href^="#"]');
+      if (hashLink) {
+        e.preventDefault();
+        const href = hashLink.getAttribute('href');
+        navigateToHash(href);
+        try { history.replaceState(null, '', href); } catch (err) {}
+      }
+    });
+
+    window.addEventListener('hashchange', () => navigateToHash(window.location.hash));
+
+    (function initTheme() {
+      const key = 'efilism_wiki_theme';
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      function apply(mode) {
+        if (mode === 'dark') {
+          root.setAttribute('data-theme', 'dark');
+          btn.textContent = 'Светлая';
+        } else {
+          root.removeAttribute('data-theme');
+          btn.textContent = 'Тёмная';
+        }
+      }
+      let saved = null;
+      try { saved = localStorage.getItem(key); } catch (e) {}
+      if (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        saved = 'dark';
+      }
+      apply(saved === 'dark' ? 'dark' : 'light');
+      btn.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem(key, next); } catch (e) {}
+        apply(next);
+      });
+    })();
+
+    if (window.location.hash) {
+      navigateToHash(window.location.hash);
+    }
+  </script>
+</body>
+</html>
