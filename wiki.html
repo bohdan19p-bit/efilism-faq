@@ -474,6 +474,70 @@
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
+  
+    .author-gloss {
+      margin: 14px 0 18px;
+      padding: 11px 14px;
+      border-radius: 10px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+    }
+    .author-gloss summary {
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--primary);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .author-gloss summary::-webkit-details-marker { display: none; }
+    .author-gloss summary::after {
+      content: '+';
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .author-gloss[open] summary::after { content: '−'; }
+    .author-gloss-body {
+      margin-top: 9px;
+      padding-top: 9px;
+      border-top: 1px dashed var(--border);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .author-gloss-body p { margin: 0 0 8px; }
+    .author-gloss-body p:last-child { margin-bottom: 0; }
+    .author-gloss-meta {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .wiki-to-top {
+      position: fixed;
+      right: 16px;
+      bottom: 20px;
+      z-index: 45;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .wiki-to-top.visible { display: inline-flex; }
+
   </style>
 </head>
 <body id="top">
@@ -482,9 +546,11 @@
       <div class="brand">Efilism RUS · Эфилизм Вики</div>
       <nav class="nav-links" aria-label="Сайты проекта">
         <a href="https://bohdan19p-bit.github.io/efilism-faq/start.html" target="_blank" rel="noopener">Начать здесь</a>
-        <a href="https://bohdan19p-bit.github.io/efilism-atlas/" target="_blank" rel="noopener">Атлас v3.7</a>
+        <a href="https://bohdan19p-bit.github.io/efilism-atlas/" target="_blank" rel="noopener">Атлас v3.8</a>
         <a href="https://bohdan19p-bit.github.io/efilism-faq/" target="_blank" rel="noopener">FAQ</a>
         <a href="https://bohdan19p-bit.github.io/efilism-faq/glossary.html" target="_blank" rel="noopener">Глоссарий</a>
+        <a href="https://bohdan19p-bit.github.io/efilism-faq/book.html" target="_blank" rel="noopener">Книга</a>
+        <a href="https://bohdan19p-bit.github.io/efilism-faq/roadmap.html" target="_blank" rel="noopener">Дорожная карта</a>
         <button class="theme-btn" id="themeToggle" type="button">Тема</button>
       </nav>
     </div>
@@ -601,7 +667,9 @@
       <div class="bridge-note">
         В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-20" target="_blank" rel="noopener">REV-20 (функция и первичная дисфункция)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#ARG-08" target="_blank" rel="noopener">ARG-08 (чистое создание)</a>.
       </div>
-    </article>
+    
+      <details class="author-gloss"><summary>Комментарий автора оригинальной Вики: метафоры и DNA's Contingency (архив 2020–2021)</summary><div class="author-gloss-body"><p><strong>DNA's Contingency (письмо от 2020-04-04):</strong> слово «контингентность» в оригинале означает «возникающий или существующий лишь при выполнении определённых условий». Речь идёт о необязательных внешних условиях, которые породили и поддерживают механизм ДНК (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:O05" target="_blank" rel="noopener">CON:O05</a>).</p><p><strong>Метафора «заведённой пружины» (spindle, 2021-06-14):</strong> автор поясняет, что речь идёт об инстинктах выживания и размножения — встроенной биологической программе, вынуждающей организм выполнять заданные действия под угрозой боли и лишения (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:O17" target="_blank" rel="noopener">CON:O17</a>).</p><p><strong>Метафора «мяча на привязи» (tether-ball, 2021-06-14):</strong> образ адаптивных иллюзий (Adaptive Delusions), удерживающих модель мира человека в узких рамках, потому что выход за них сталкивается с психологически тяжёлыми фактами (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:P02" target="_blank" rel="noopener">CON:P02</a>).</p><div class="author-gloss-meta">Источник: архив переписки lordsatanx (2020–2021) · пояснение к терминологии оригинальной Вики</div></div></details>
+</article>
 
 <article class="wiki-section" id="positive-experience">
       <div class="h-row">
@@ -696,8 +764,8 @@
           <span>Все площадки, соцсети и книга</span>
         </a>
         <a class="link-tile" href="https://bohdan19p-bit.github.io/efilism-atlas/" target="_blank" rel="noopener">
-          Исследовательский атлас v3.7
-          <span>137 понятий, 18 аргументов, 12 возражений</span>
+          Исследовательский атлас v3.8
+          <span>137 понятий, 18 аргументов, 15 возражений</span>
         </a>
         <a class="link-tile" href="https://bohdan19p-bit.github.io/efilism-faq/" target="_blank" rel="noopener">
           Большой FAQ (55 вопросов)
@@ -709,7 +777,16 @@
         </a>
       </div>
 
-      <a class="back-top" href="#top">↑ Вернуться к началу страницы</a>
+            <div class="author-gloss" style="margin-top:14px;">
+        <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">Практическая стратегия и схема связей</div>
+        <div style="font-size:0.9rem;line-height:1.55;">
+          Для наглядного перехода от теории к практике и аргументации см.
+          <a href="https://bohdan19p-bit.github.io/efilism-faq/roadmap.html" target="_blank" rel="noopener"><strong>Дорожную карту и стратегию эфилизма</strong></a>,
+          <a href="https://bohdan19p-bit.github.io/efilism-faq/book.html" target="_blank" rel="noopener"><strong>страницу монографии (2026)</strong></a> и
+          интерактивную <a href="https://bohdan19p-bit.github.io/efilism-atlas/" target="_blank" rel="noopener"><strong>Схему связей в Атласе v3.8</strong></a>.
+        </div>
+      </div>
+<a class="back-top" href="#top">↑ Вернуться к началу страницы</a>
     </article>
 
       <div class="pager">
@@ -772,7 +849,9 @@
         Эфилизм полностью поддерживает <strong>веганизм</strong>, снижение страданий животных и добровольное воздержание от размножения как важные шаги по уменьшению вреда. Однако он указывает на масштабную границу этих подходов: даже полное исчезновение одного вида оставляет нетронутой основную причинную архитектуру дикой природы, где сотни миллионов лет продолжаются хищничество, болезни и массовая гибель потомства. Поэтому позиция, отвергающая натализм, но отказывающаяся рассматривать проблему страдания за пределами человеческого вида, оказывается непоследовательной (<em>парохиализм</em>).
       </p>
 
-      <h3 id="arena-error-prime">
+      
+      <details class="author-gloss"><summary>Комментарий автора оригинальной Вики: эволюция терминов и парохиализм (архив 2020)</summary><div class="author-gloss-body"><p><strong>Переход к «Абсолютному антинатализму» (2020-03-01):</strong> ранние ярлыки <code>sentio-centric</code>, <code>sensory-centric</code> и <code>pro-mortalism</code> использовались ради пояснения, но сам автор Вики заменил их единым термином <em>Absolute Antinatalism</em> как более точным преемником, охватывающим базовое и техническое обоснование (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:X01" target="_blank" rel="noopener">CON:X01</a>).</p><p><strong>Парохиализм:</strong> определяется автором как ошибка избирательной логики (fallacy of selective logic), на которой строится выборочный антинатализм (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:P05" target="_blank" rel="noopener">CON:P05</a>).</p><div class="author-gloss-meta">Источник: архив переписки lordsatanx (2020-03-01)</div></div></details>
+<h3 id="arena-error-prime">
         <span>5.3. Объективные ошибки, Первичная Ошибка и Первичный факт</span>
         <button class="anchor-btn" type="button" data-anchor="arena-error-prime">#arena-error-prime</button>
       </h3>
@@ -828,7 +907,9 @@
         Радикальный <strong>субъективизм и релятивизм</strong> («объективной истины не существует, всё — лишь личное мнение») сталкиваются с внутренним противоречием: чтобы обосновать сам тезис субъективизма как значимый, им приходится опираться на объективное утверждение о том, как устроено познание. Если же сам субъективизм — лишь частное мнение, он не имеет веса против проверяемых фактов о переживаемой боли.
       </p>
 
-      <h3 id="arena-epistemology">
+      
+      <details class="author-gloss"><summary>Комментарий автора оригинальной Вики: реализм, взаимное обнуление и модальность (архив 2020)</summary><div class="author-gloss-body"><p><strong>Реализм против «космического пессимизма» (2020-03-16):</strong> эфилизм строится как реалистическая модель действительности, а не как эмоциональное настроение; подмена обсуждения фактов обсуждением психологии уводит разговор от сути (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:E11" target="_blank" rel="noopener">CON:E11</a>).</p><p><strong>Трёхшаговый QED взаимного обнуления (Mutually Void, 2020-11-26):</strong> даже при взаимном обнулении антинатализма и натализма итогом остаётся отсутствие жизни, поскольку исходную презумпцию запуска вводит именно натализм и на нём лежит бремя доказательства (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:D01" target="_blank" rel="noopener">CON:D01</a>).</p><p><strong>Подмена модальности (2020-02-17):</strong> критики часто сводят тезис к деонтической модальности (Deontic: «жизнь не должна существовать»), игнорируя модальность реалиса (Realis), чтобы переложить бремя доказательства (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:N05" target="_blank" rel="noopener">CON:N05</a>).</p><div class="author-gloss-meta">Источник: архив переписки lordsatanx (2020)</div></div></details>
+<h3 id="arena-epistemology">
         <span>5.7. Анализандум, «случайность» и критика абсолютного скептицизма</span>
         <button class="anchor-btn" type="button" data-anchor="arena-epistemology">#arena-epistemology</button>
       </h3>
@@ -864,7 +945,9 @@
       <div class="bridge-note">
         В монографии и Атласе: <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-11" target="_blank" rel="noopener">REV-11 (Первичная Ошибка и Первичный факт)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-16" target="_blank" rel="noopener">REV-16 (законы и детерминизм)</a> · <a href="https://bohdan19p-bit.github.io/efilism-atlas/#REV-22" target="_blank" rel="noopener">REV-22 (мотив оппонента)</a>.
       </div>
-      <a class="back-top" href="#top">↑ Вернуться к началу страницы</a>
+      
+      <details class="author-gloss"><summary>Комментарий автора оригинальной Вики: двойное назначение технологий (архив 2020)</summary><div class="author-gloss-body"><p><strong>Dual Use of Technology (Security Philosophy 101, 2020-02-28):</strong> любые мощные технологии преобразования биологии и сознания несут симметричный риск сделать страдания значительно глубже и продолжительнее (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:S03" target="_blank" rel="noopener">CON:S03</a>, <a href="https://bohdan19p-bit.github.io/efilism-atlas/#CRI:W03" target="_blank" rel="noopener">CRI:W03</a>).</p><div class="author-gloss-meta">Источник: архив переписки lordsatanx (2020-02-28)</div></div></details>
+<a class="back-top" href="#top">↑ Вернуться к началу страницы</a>
     </article>
 
       <div class="pager">
@@ -941,7 +1024,9 @@
         <strong>Трёхуровневый переход монографии (§§22.4, 23.2):</strong> сначала фиксируется факт переживания; затем его внутренняя неблагоприятность для носителя (внешняя польза болезненного лечения не отменяет мучительности самой боли); и наконец, самостоятельный этический принцип равного учёта — сходная боль не теряет веса только от того, что её испытывает другой субъект.
       </div>
 
-      <h3 id="value-failsafe">
+      
+      <details class="author-gloss"><summary>Комментарий автора оригинальной Вики: присущая и проецируемая ценность (архив 2020)</summary><div class="author-gloss-body"><p><strong>Inherent Value vs Projection Value (2020-11-27):</strong> автор разводит присущую ценность (истинный вывод о реальном переживаемом состоянии) и проецируемую ценность (ложный вывод, когда субъект приписывает жизни или вселенной то, чем они сами по себе не обладают) (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:C04" target="_blank" rel="noopener">CON:C04</a>).</p><div class="author-gloss-meta">Источник: архив переписки lordsatanx (2020-11-27)</div></div></details>
+<h3 id="value-failsafe">
         <span>6.4. Аксиология и двойной предохранитель несоздания</span>
         <button class="anchor-btn" type="button" data-anchor="value-failsafe">#value-failsafe</button>
       </h3>
@@ -1046,7 +1131,9 @@
         Этот принцип важен не как отвлечённая игра ума, а как опора против интеллектуального бегства: нельзя отменить объективную реальность страдания, сославшись на то, что «любую истину можно объявить относительной».
       </p>
 
-      <h3 id="truth-nomological">
+      
+      <details class="author-gloss"><summary>Комментарий автора оригинальной Вики: тест «what is the case» (архив 2020)</summary><div class="author-gloss-body"><p><strong>«What is the case / what is not the case» (2020-05-01):</strong> эта формула в текстах Вики буквально означает «что действительно происходит / чего не происходит». Любая субъективистская или антиреалистическая концепция всё равно вынуждена утверждать, что нечто действительно имеет место (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:L03" target="_blank" rel="noopener">CON:L03</a>).</p><div class="author-gloss-meta">Источник: архив переписки lordsatanx (2020-05-01)</div></div></details>
+<h3 id="truth-nomological">
         <span>7.4. Номологическая необходимость и Первичный факт</span>
         <button class="anchor-btn" type="button" data-anchor="truth-nomological">#truth-nomological</button>
       </h3>
@@ -1057,7 +1144,9 @@
         В исторических материалах этот предельный вопрос обозначался как <strong>Первичный факт</strong>. В монографии 2026 года подчёркивается его честный исследовательский статус: единственность и точная физическая природа предельного основания законов остаются открытым вопросом науки и философии, а этический вывод о недопустимости навязывания крайнего риска при чистом создании не зависит от построения «окончательной теории всего».
       </p>
 
-      <h3 id="truth-contingency">
+      
+      <details class="author-gloss"><summary>Комментарий автора оригинальной Вики: Fact Prime, бесконечность и конечный стазис (архив 2020–2021)</summary><div class="author-gloss-body"><p><strong>Fact Prime (2021-04-06):</strong> автор связывает понятие первичного факта с номологической необходимостью и предлагает строго отделять первичные факты от производных (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:O07" target="_blank" rel="noopener">CON:O07</a>).</p><p><strong>Разбор «бесконечности» (2020-05-30):</strong> бесконечность рассматривается не как доказанный феномен, а как составная связка трёх понятий — «Количество + Никогда + Остановка» (Quantity, Never, Stop), чья физическая реализуемость не доказана (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:O12" target="_blank" rel="noopener">CON:O12</a>).</p><p><strong>«Permanent universal lockdown» (2021-06-14):</strong> образ сводится к простому утверждению — «состояние, при котором события больше не могут происходить» (<a href="https://bohdan19p-bit.github.io/efilism-atlas/#CON:S07" target="_blank" rel="noopener">CON:S07</a>).</p><div class="author-gloss-meta">Источник: архив переписки lordsatanx (2020–2021)</div></div></details>
+<h3 id="truth-contingency">
         <span>7.5. Изменчивость, необходимость и необратимость событий</span>
         <button class="anchor-btn" type="button" data-anchor="truth-contingency">#truth-contingency</button>
       </h3>
@@ -1228,7 +1317,7 @@
         <span class="pill">Раздел 6 из 6 · Академическая проверка на прочность</span>
         <h1>Сильные возражения против эфилизма</h1>
         <p class="lead">
-          Двенадцать самых серьёзных философских контраргументов из Исследовательского атласа v3.7. В каждом разборе представлена сильная версия возражения без карикатур, точный ответ по монографии 2026 года и честная граница спора.
+          Двенадцать самых серьёзных философских контраргументов из Исследовательского атласа v3.8. В каждом разборе представлена сильная версия возражения без карикатур, точный ответ по монографии 2026 года и честная граница спора.
         </p>
       </section>
 
@@ -1334,6 +1423,27 @@
         <p><strong>Ответ:</strong> любой, кто выдвигает довод в пользу рождения как обоснованный, уже тем самым открывает его для проверки на непротиворечивость. От проверки можно отказаться, но такой отказ оставляет решение без предъявленного оправдания; а практическая обязанность учитывать другого вытекает не из определения слова «рациональность», а из принципа равного учёта интересов. <a href="https://bohdan19p-bit.github.io/efilism-atlas/#CRI:O12" target="_blank" rel="noopener">Карточка в Атласе →</a></p>
       </article>
 
+      <h2>Блок 4. Космология, будущее и технологии (из архива автора Вики)</h2>
+
+      <article class="card">
+        <h3 id="cri-w01"><span>13. Аргумент «чёрного лебедя» и неизвестного будущего</span><button class="anchor-btn" type="button" data-anchor="cri-w01">#cri-w01</button></h3>
+        <p><strong>Суть возражения:</strong> нельзя исключать, что в далёком будущем произойдёт непредвиденный технологический или космологический прорыв («чёрный лебедь»), который полностью устранит страдания и оправдает продолжение жизни.</p>
+        <p><strong>Ответ:</strong> апелляция к неизвестному будущему не снимает бремя доказательства с того, кто запускает новых субъектов в условия гарантированного риска. Принцип индуктивного скептицизма симметричен: неизвестные события будущего с не меньшей вероятностью могут оказаться катастрофическими, а не спасительными. <a href="https://bohdan19p-bit.github.io/efilism-atlas/#CRI:W01" target="_blank" rel="noopener">Карточка в Атласе →</a></p>
+      </article>
+
+      <article class="card">
+        <h3 id="cri-w02"><span>14. Цикличная или бесконечная вселенная</span><button class="anchor-btn" type="button" data-anchor="cri-w02">#cri-w02</button></h3>
+        <p><strong>Суть возражения:</strong> если вселенная бесконечна во времени или циклична, то жизнь неизбежно возникнет снова, а значит любые усилия по предотвращению страданий бессмысленны.</p>
+        <p><strong>Ответ:</strong> понятие «бесконечность» здесь принимается без доказательства, хотя представляет собой составную связку («Количество + Никогда + Остановка»). Кроме того, аргумент упирается в дилемму: если бесконечность ложна, проблема принципиально решаема; если же бесконечное повторение реально, оно одинаково обесценивает и любые пронаталистические проекты прогресса, не отменяя этического запрета на создание вреда в доступном нам масштабе. <a href="https://bohdan19p-bit.github.io/efilism-atlas/#CRI:W02" target="_blank" rel="noopener">Карточка в Атласе →</a></p>
+      </article>
+
+      <article class="card">
+        <h3 id="cri-w03"><span>15. Техноутопизм, гедонистический императив и двойное назначение технологий</span><button class="anchor-btn" type="button" data-anchor="cri-w03">#cri-w03</button></h3>
+        <p><strong>Суть возражения:</strong> вместо отказа от воспроизводства человечество может с помощью нейротехнологий, генной инженерии и ИИ полностью устранить боль и создать мир устойчивого благополучия.</p>
+        <p><strong>Ответ:</strong> согласно принципу двойного назначения технологий (Dual Use of Technology, Security Philosophy 101), любые инструменты, способные глубоко перестраивать сознание и биологию, несут симметричный риск масштабирования страданий (s-risks) на порядки выше природных. Помощь живущим через медицину остаётся ценной, но утопический прогноз не оправдывает запуск новых поколений в систему без гарантий. <a href="https://bohdan19p-bit.github.io/efilism-atlas/#CRI:W03" target="_blank" rel="noopener">Карточка в Атласе →</a></p>
+      </article>
+
+
       <div class="pager">
         <button class="pager-btn" type="button" data-go-page="faq">← FAQ и аргументы</button>
         <button class="pager-btn" type="button" data-go-page="home">Вернуться на Главную</button>
@@ -1346,6 +1456,7 @@
     </footer>
   </main>
 
+  <button type="button" class="wiki-to-top" id="wikiToTop" aria-label="Наверх" title="Наверх">↑</button>
   <div class="toast" id="toast" role="status" aria-live="polite">Ссылка с якорем скопирована</div>
 
   <script>
@@ -1483,6 +1594,15 @@
     if (window.location.hash) {
       navigateToHash(window.location.hash);
     }
-  </script>
+  
+    (function initToTop() {
+      const btn = document.getElementById('wikiToTop');
+      if (!btn) return;
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 340);
+      }, { passive: true });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+</script>
 </body>
 </html>
